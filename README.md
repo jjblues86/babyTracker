@@ -44,6 +44,7 @@ AWS Implementations:
 - Amazon Neptune (if new AWS system required)
 - Stretch Goal: S3
 - Stretch Goal: Lambda (w/IOT button)
+
 **Idea 2: TAQ**
 *Summary:* 
 This app will enable Code Fellows students to enter their names in the queue when they need help from a TA with their labs. The TAQ app will be used by both TAs and students to confirm who is next in line for assistance.
