@@ -28,6 +28,7 @@
 * Create branch for every feature that we will implement.
 
 **Idea 1: Baby Tracker**
+
 *Summary:* 
 This app provides valuable information for users on the developmental milestones of babies in the first year after birth (0-12) months. We want to make it easier for the users by providing data based on statistics/research on where their baby should be. The app also has other features like nutrition which notifies users when to feed their babies or the last time their baby was fed, and also investing strategies for the users to better prepare for their baby’s future.
 
@@ -46,6 +47,7 @@ AWS Implementations:
 - Stretch Goal: Lambda (w/IOT button)
 
 **Idea 2: TAQ**
+
 *Summary:* 
 This app will enable Code Fellows students to enter their names in the queue when they need help from a TA with their labs. The TAQ app will be used by both TAs and students to confirm who is next in line for assistance.
 
