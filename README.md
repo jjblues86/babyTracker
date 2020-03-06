@@ -13,16 +13,22 @@
 # Team Agreement
 
 * Communication Plan
-    * Slack
-    * Phone numbers
-    * Email
-    * Text
+    * When you are going to be late, let the team know.
+        * Slack
+        * Phone numbers
+        * Email
+        * Text
 * Conflict Plan
     * Majority vote (There are 5 people in the group so no need for a tie breaker)
+    * We will try to resolve issue internally before we escalate.
+    * If escalation is really needed, we will talk as a team.
 * Work Plan
     * GitHub Project
     * Stand-Up in the morning and by end of day.
+    * No work on the weekends.
+    * Weekdays - 9 am to 5 pm.
 * Git process
+    * Development branch will be created.
     * Master is protected. 
         * 1 approver
 * Create branch for every feature that we will implement.
