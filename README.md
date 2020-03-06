@@ -44,6 +44,9 @@ AWS Implementations:
 - Notifications
 - DynamoDB
 - Amazon Neptune (if new AWS system required)
+- AWS Device Farm
+   * is an application testing service that lets you improve the quality of your web and mobile apps by testing them across an extensive range of desktop browsers and real mobile devices
+   * The service enables you to run your tests concurrently on multiple desktop browsers or real devices to speed up the execution of your test suite, and generates videos and logs to help you quickly identify issues with your app.
 - Stretch Goal: S3
 - Stretch Goal: Lambda (w/IOT button)
 
