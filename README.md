@@ -74,7 +74,4 @@ A queue with a student sign-up.  App will alert the first student waiting for as
    * As a user I want to have the ability to save data into my profile regarding my baby's developmental milestone
 
 ## Wireframe
-> ![wireframe]()
-
-
-
+> ![wireframe](assets/baby_tracker.pdf)
