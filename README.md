@@ -60,4 +60,20 @@ Addresses multiple students waiting for teaching aide availability without knowl
 A queue with a student sign-up.  App will alert the first student waiting for assistance when the first TA becomes available.
 
 
+- User Story 1
+   * As a new parent I would like to know the development milestones for my new born
+- User Story 2
+   * As a new Dad I want to be able to save shopping list and check off when I do shopping
+- User Story 3.
+   * As a user I want to have nutritional information for my baby. Implement notification for parents who feed their baby by specific hour/time.
+- User Story 4.
+   * As a user I want to have the ability to create a gallery photos of my child
+- User Story 5
+   * As a user I want to add multiple children to my profile
+- User Story 6
+   * As a user I want to have the ability to save data into my profile regarding my baby's developmental milestone
+
+
+
+
 
