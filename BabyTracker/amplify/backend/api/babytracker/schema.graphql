@@ -1,6 +1,6 @@
 type Baby @model {
   id: ID!
   name: String!
-  dob: Date
+  dob: String
   immunization: Boolean
 }

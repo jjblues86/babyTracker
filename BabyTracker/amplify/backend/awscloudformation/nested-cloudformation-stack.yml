@@ -78,7 +78,7 @@
 					"DynamoDBBillingMode": "PAY_PER_REQUEST",
 					"DynamoDBEnableServerSideEncryption": "false",
 					"S3DeploymentBucket": "amplify-babytracker-dev-100554-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/f2f1787c403e2606781eac1a44c1cf056af1098d",
+					"S3DeploymentRootKey": "amplify-appsync-files/a6c8336397c66c86543d72329f3f0f54a6775c9f",
 					"env": "dev"
 				}
 			}
