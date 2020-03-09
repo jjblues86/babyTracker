@@ -1,0 +1,42 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-babytracker-dev-100554-authRole",
+			"UnauthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "amplify-babytracker-dev-100554-deployment",
+			"UnauthRoleName": "amplify-babytracker-dev-100554-unauthRole",
+			"StackName": "amplify-babytracker-dev-100554",
+			"StackId": "arn:aws:cloudformation:us-west-2:283610981787:stack/amplify-babytracker-dev-100554/54a4fee0-609e-11ea-a826-0a25a13ca77a",
+			"AmplifyAppId": "d3cxovmwlxxb19"
+		}
+	},
+	"api": {
+		"babytracker": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "",
+							"apiKeyExpirationDays": "60"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "ap3j7wy7x5ctnjjphi6qselykq",
+				"GraphQLAPIEndpointOutput": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
+			},
+			"lastPushTimeStamp": "2020-03-09T02:16:56.233Z",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apibabytracker"
+			},
+			"lastPushDirHash": "NOhUrCAnyAC2CbNCzMudSpYNU6o="
+		}
+	}
+}
