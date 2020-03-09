@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-babytracker-dev-100554-authRole",
+            "UnauthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-babytracker-dev-100554-deployment",
+            "UnauthRoleName": "amplify-babytracker-dev-100554-unauthRole",
+            "StackName": "amplify-babytracker-dev-100554",
+            "StackId": "arn:aws:cloudformation:us-west-2:283610981787:stack/amplify-babytracker-dev-100554/54a4fee0-609e-11ea-a826-0a25a13ca77a",
+            "AmplifyAppId": "d3cxovmwlxxb19"
+        }
+    }
+}

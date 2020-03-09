@@ -1,0 +1,17 @@
+{
+    "UserAgent": "aws-amplify-cli/2.0",
+    "Version": "1.0",
+    "api": {
+        "plugins": {
+            "awsAPIPlugin": {
+                "babytracker": {
+                    "endpointType": "GraphQL",
+                    "endpoint": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
+                    "region": "us-west-2",
+                    "authorizationType": "API_KEY",
+                    "apiKey": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
+                }
+            }
+        }
+    }
+}
