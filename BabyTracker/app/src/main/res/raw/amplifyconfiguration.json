@@ -6,10 +6,10 @@
             "awsAPIPlugin": {
                 "babytracker": {
                     "endpointType": "GraphQL",
-                    "endpoint": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
+                    "endpoint": "https://v56bblwsljd2bklau7omlr6oii.appsync-api.us-west-2.amazonaws.com/graphql",
                     "region": "us-west-2",
                     "authorizationType": "API_KEY",
-                    "apiKey": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
+                    "apiKey": "da2-4iqtpmllzndcjnkuhbtweahg64"
                 }
             }
         }

@@ -6,10 +6,10 @@
     },
     "AppSync": {
         "Default": {
-            "ApiUrl": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
+            "ApiUrl": "https://v56bblwsljd2bklau7omlr6oii.appsync-api.us-west-2.amazonaws.com/graphql",
             "Region": "us-west-2",
             "AuthMode": "API_KEY",
-            "ApiKey": "da2-ueia7zuqrvbizi3gf6fprxlsqu",
+            "ApiKey": "da2-4iqtpmllzndcjnkuhbtweahg64",
             "ClientDatabasePrefix": "babytracker_API_KEY"
         }
     }
