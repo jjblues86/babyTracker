@@ -154,9 +154,10 @@ Temporary Items
 **/.settings/
 nested-cloudformation-stack.yml
 amplify/\#current-cloud-backend
-amplify/.config/local-*
+amplify/.config/local-env-info.json
 amplify/backend/amplify-meta.json
 amplify/backend/awscloudformation
+/amplify/backend/storage/bbpic/parameters.json
 build/
 dist/
 node_modules/
