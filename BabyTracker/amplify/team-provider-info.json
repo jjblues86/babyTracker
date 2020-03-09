@@ -23,6 +23,11 @@
             "StackName": "amplify-babytracker-tracker-110733",
             "StackId": "arn:aws:cloudformation:us-west-2:635778724333:stack/amplify-babytracker-tracker-110733/db0c4c70-6230-11ea-9a01-0ac711d65b04",
             "AmplifyAppId": "d39jlk2w7v7taa"
+        },
+        "categories": {
+            "auth": {
+                "babytracker0e020013": {}
+            }
         }
     }
 }
