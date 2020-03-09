@@ -85,5 +85,8 @@ A queue with a student sign-up.  App will alert the first student waiting for as
 ## Wireframe
 [wireframe](assets/baby_tracker_v1.pdf)
 
+# Database Entity-Relationship-Diagram
+![ERD](assets/babyTrackerERD.png)
+
 
 
