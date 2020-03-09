@@ -81,4 +81,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/uploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload image"
+        app:layout_constraintBottom_toTopOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/dateOfBirth"
+        tools:layout_editor_absoluteX="230dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
