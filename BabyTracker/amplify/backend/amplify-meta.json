@@ -31,12 +31,15 @@
 				"GraphQLAPIEndpointOutput": "https://v56bblwsljd2bklau7omlr6oii.appsync-api.us-west-2.amazonaws.com/graphql",
 				"GraphQLAPIKeyOutput": "da2-4iqtpmllzndcjnkuhbtweahg64"
 			},
+
+			"lastPushTimeStamp": "2020-03-09T17:59:36.836Z",
+
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-tracker-110733-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apibabytracker"
 			},
-			"lastPushTimeStamp": "2020-03-09T18:10:59.936Z",
-			"lastPushDirHash": "K4wzUS6MFcw3D94AIuT9kov80MY="
+			"lastPushDirHash": "pEc0Pba5hQBHkhkirhxMSOXSK0o="
+
 		}
 	}
 }
