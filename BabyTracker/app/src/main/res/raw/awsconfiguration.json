@@ -12,5 +12,26 @@
             "ApiKey": "da2-4iqtpmllzndcjnkuhbtweahg64",
             "ClientDatabasePrefix": "babytracker_API_KEY"
         }
+    },
+    "CredentialsProvider": {
+        "CognitoIdentity": {
+            "Default": {
+                "PoolId": "us-west-2:adc4049f-abab-48fd-a901-c6baef5d68d4",
+                "Region": "us-west-2"
+            }
+        }
+    },
+    "CognitoUserPool": {
+        "Default": {
+            "PoolId": "us-west-2_ory9OMwHs",
+            "AppClientId": "3kimsr32k3g4e56qpob5kae8dr",
+            "AppClientSecret": "t6f2m3k96fcjmvon3m3tu5v978f5uj7bi983vqkcmnm0qi24jlf",
+            "Region": "us-west-2"
+        }
+    },
+    "Auth": {
+        "Default": {
+            "authenticationFlowType": "USER_SRP_AUTH"
+        }
     }
 }
