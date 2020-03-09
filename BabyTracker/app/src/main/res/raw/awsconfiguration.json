@@ -6,26 +6,26 @@
     },
     "AppSync": {
         "Default": {
-            "ApiUrl": "https://v56bblwsljd2bklau7omlr6oii.appsync-api.us-west-2.amazonaws.com/graphql",
+            "ApiUrl": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
             "Region": "us-west-2",
             "AuthMode": "API_KEY",
-            "ApiKey": "da2-4iqtpmllzndcjnkuhbtweahg64",
+            "ApiKey": "da2-ueia7zuqrvbizi3gf6fprxlsqu",
             "ClientDatabasePrefix": "babytracker_API_KEY"
         }
     },
     "CredentialsProvider": {
         "CognitoIdentity": {
             "Default": {
-                "PoolId": "us-west-2:adc4049f-abab-48fd-a901-c6baef5d68d4",
+                "PoolId": "us-west-2:37a23aa2-af82-427c-b891-651980929c21",
                 "Region": "us-west-2"
             }
         }
     },
     "CognitoUserPool": {
         "Default": {
-            "PoolId": "us-west-2_ory9OMwHs",
-            "AppClientId": "3kimsr32k3g4e56qpob5kae8dr",
-            "AppClientSecret": "t6f2m3k96fcjmvon3m3tu5v978f5uj7bi983vqkcmnm0qi24jlf",
+            "PoolId": "us-west-2_L5RZ98wPN",
+            "AppClientId": "hq3gmfm0t1goou6kj2ah5f1l1",
+            "AppClientSecret": "1npmndt71m1252t2f1er4r36l0od01oq0qql17d224rvlf59uc96",
             "Region": "us-west-2"
         }
     },

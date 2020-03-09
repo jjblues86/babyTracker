@@ -1,15 +1,15 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "amplify-babytracker-tracker-110733-authRole",
-			"UnauthRoleArn": "arn:aws:iam::635778724333:role/amplify-babytracker-tracker-110733-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::635778724333:role/amplify-babytracker-tracker-110733-authRole",
+			"AuthRoleName": "amplify-babytracker-dev-100554-authRole",
+			"UnauthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::283610981787:role/amplify-babytracker-dev-100554-authRole",
 			"Region": "us-west-2",
-			"DeploymentBucketName": "amplify-babytracker-tracker-110733-deployment",
-			"UnauthRoleName": "amplify-babytracker-tracker-110733-unauthRole",
-			"StackName": "amplify-babytracker-tracker-110733",
-			"StackId": "arn:aws:cloudformation:us-west-2:635778724333:stack/amplify-babytracker-tracker-110733/db0c4c70-6230-11ea-9a01-0ac711d65b04",
-			"AmplifyAppId": "d39jlk2w7v7taa"
+			"DeploymentBucketName": "amplify-babytracker-dev-100554-deployment",
+			"UnauthRoleName": "amplify-babytracker-dev-100554-unauthRole",
+			"StackName": "amplify-babytracker-dev-100554",
+			"StackId": "arn:aws:cloudformation:us-west-2:283610981787:stack/amplify-babytracker-dev-100554/54a4fee0-609e-11ea-a826-0a25a13ca77a",
+			"AmplifyAppId": "d3cxovmwlxxb19"
 		}
 	},
 	"api": {
@@ -27,16 +27,15 @@
 						}
 					}
 				},
-				"GraphQLAPIIdOutput": "chjzttc425htjkgtn4ll7dxoum",
-				"GraphQLAPIEndpointOutput": "https://v56bblwsljd2bklau7omlr6oii.appsync-api.us-west-2.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-4iqtpmllzndcjnkuhbtweahg64"
+				"GraphQLAPIIdOutput": "ap3j7wy7x5ctnjjphi6qselykq",
+				"GraphQLAPIEndpointOutput": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
 			},
+			"lastPushTimeStamp": "2020-03-09T22:31:41.303Z",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-tracker-110733-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apibabytracker"
-			},
-			"lastPushTimeStamp": "2020-03-09T20:55:44.305Z",
-			"lastPushDirHash": "K4wzUS6MFcw3D94AIuT9kov80MY="
+			}
 		}
 	},
 	"auth": {
@@ -46,17 +45,17 @@
 			"dependsOn": [],
 			"customAuth": false,
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-tracker-110733-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
 				"logicalId": "authbabytracker0e020013"
 			},
-			"lastPushTimeStamp": "2020-03-09T20:55:44.309Z",
+			"lastPushTimeStamp": "2020-03-09T22:31:41.311Z",
 			"output": {
-				"AppClientSecret": "t6f2m3k96fcjmvon3m3tu5v978f5uj7bi983vqkcmnm0qi24jlf",
-				"UserPoolId": "us-west-2_ory9OMwHs",
-				"AppClientIDWeb": "7jvpekbuo8n80i6plvd62nj7mk",
-				"AppClientID": "3kimsr32k3g4e56qpob5kae8dr",
-				"IdentityPoolId": "us-west-2:adc4049f-abab-48fd-a901-c6baef5d68d4",
-				"IdentityPoolName": "babytracker0e020013_identitypool_0e020013__tracker",
+				"AppClientSecret": "1npmndt71m1252t2f1er4r36l0od01oq0qql17d224rvlf59uc96",
+				"UserPoolId": "us-west-2_L5RZ98wPN",
+				"AppClientIDWeb": "4ogekj4qlohd23fajkhmtgkc89",
+				"AppClientID": "hq3gmfm0t1goou6kj2ah5f1l1",
+				"IdentityPoolId": "us-west-2:37a23aa2-af82-427c-b891-651980929c21",
+				"IdentityPoolName": "babytracker0e020013_identitypool_0e020013__dev",
 				"UserPoolName": "babytracker0e020013_userpool_0e020013"
 			},
 			"lastPushDirHash": "tuQUYKBDS/cTsny2pPw3X3yc1lE="
