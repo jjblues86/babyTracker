@@ -34,5 +34,8 @@
 * Create branch for every feature that we will implement.
 
 
+# Database Entity-Relationship-Diagram
+![ERD](assets/babyTrackerERD.png)
+
 
 
