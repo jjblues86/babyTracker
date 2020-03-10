@@ -94,10 +94,14 @@ public class QuestionnaireActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText input = findViewById(R.id.newBabyNameLayout);
-                String inputText = input.getText().toString();
 
-                Baby newBaby = new Baby(inputText, );
+                EditText inputName = findViewById(R.id.newBabyNameActual);
+                String inputNameText = inputName.getText().toString();
+
+                EditText inputDOB = findViewById(R.id.newBabyDOBActual);
+                String inputDOBText = inputDOB.getText().toString();
+
+                Baby newBaby = new Baby(inputNameText, inputDOBText, true);
                 QuestionnaireActivity.this.babyList.add(0, newBaby);
 
                 Log.i(TAG, "added to recyclerview");

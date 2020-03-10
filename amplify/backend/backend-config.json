@@ -9,7 +9,7 @@
 					"defaultAuthentication": {
 						"authenticationType": "API_KEY",
 						"apiKeyConfig": {
-							"description": "api for navHamburger",
+							"description": "new clone api",
 							"apiKeyExpirationDays": "20"
 						}
 					}
