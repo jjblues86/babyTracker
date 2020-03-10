@@ -2,6 +2,9 @@ package com.example.babytracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
+import com.amazonaws.amplify.generated.graphql.ListBabysQuery;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.SignInUIOptions;
@@ -22,6 +26,7 @@ import com.amazonaws.mobile.client.UserState;
 import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
@@ -50,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
+        getBabyItems();
 
         this.babyList = new ArrayList<>();
 
@@ -103,6 +109,47 @@ public class MainActivity extends AppCompatActivity {
         );
 
     }
+
+    //this method enables me to query data stored in dynamodb to render on my front page
+    public void getBabyItems()
+    {
+        Log.i(TAG, "Did we make it into getTaskItems");
+
+        mAWSAppSyncClient.query(ListBabysQuery.builder().build())
+                .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
+                .enqueue(tasksCallback);
+    }
+    private GraphQLCall.Callback<ListBabysQuery.Data> tasksCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
+        @Override
+        public void onResponse(@Nonnull Response<ListBabysQuery.Data> response)
+        {
+            Log.i(TAG, response.data().listBabys().items().toString());
+
+            if(babyList.size() == 0 || response.data().listBabys().items().size() != babyList.size()){
+
+                babyList.clear();
+
+                for(ListBabysQuery.Item item : response.data().listBabys().items()){
+                    Baby addBaby = new Baby(item.name(), item.dob());
+                    babyList.add(addBaby);
+                }
+                Handler handler = new Handler(Looper.getMainLooper()){
+                    @Override
+                    public void handleMessage(Message inputMessage){
+                        RecyclerView recyclerView = findViewById(R.id.babies);
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                    }
+                };
+                handler.obtainMessage().sendToTarget();
+            }
+        }
+        @Override
+        public void onFailure(@Nonnull ApolloException e)
+        {
+            Log.e(TAG, e.toString());
+//            taskDatabase.taskDao().getAll();
+        }
+    };
 
     @Override
     protected void onStart() {
@@ -218,5 +265,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return(super.onOptionsItemSelected(item));
     }
+
+
 }
 

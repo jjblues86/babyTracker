@@ -3,6 +3,9 @@ package com.example.babytracker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -13,8 +16,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
+import com.amazonaws.amplify.generated.graphql.ListBabysQuery;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
@@ -50,6 +55,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
+//        getBabyItems();
+
+
 
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
@@ -94,15 +102,20 @@ public class QuestionnaireActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText input = findViewById(R.id.newBabyNameLayout);
+                EditText input = findViewById(R.id.newBabyNameActual);
+                EditText dobInput = findViewById(R.id.newBabyDOBActual);
                 String inputText = input.getText().toString();
+                String dobText = input.getText().toString();
 
-                Baby newBaby = new Baby(inputText, );
-                QuestionnaireActivity.this.babyList.add(0, newBaby);
+                runMutation(inputText, dobText);
 
-                Log.i(TAG, "added to recyclerview");
-                RecyclerView recyclerView = findViewById(R.id.babies);
-                recyclerView.getAdapter().notifyItemInserted(0);
+
+//                Baby newBaby = new Baby(inputText, "09/29/1986");
+//                QuestionnaireActivity.this.babyList.add(0, newBaby);
+
+
+                //TODO: add baby to DB
+                //TODO: On main activity, load babylist from DB
 
 //                Context showConfirmation = getApplicationContext();
 //                CharSequence confirmationText = "Submitted";
@@ -117,7 +130,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
 
     //connecting to dynamo db
-    public void runMutation(String name, String dob, Boolean immunization){
+    public void runMutation(String name, String dob){
         CreateBabyInput createBabyInput = CreateBabyInput.builder()
                 .name(name)
                 .dob(dob)
@@ -131,6 +144,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
         @Override
         public void onResponse(@Nonnull Response<CreateBabyMutation.Data> response) {
             Log.i("Results", "Added Todo");
+//            getBabyItems();
+
         }
 
         @Override
@@ -138,6 +153,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             Log.e("Error", e.toString());
         }
     };
+
     @Override
     protected void onResume() {
         super.onResume();
