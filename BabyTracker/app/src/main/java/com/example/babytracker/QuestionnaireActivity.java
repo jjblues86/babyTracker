@@ -97,8 +97,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 EditText input = findViewById(R.id.newBabyNameLayout);
                 String inputText = input.getText().toString();
 
-//                Baby newBaby = new Baby(inputText);
-//                QuestionnaireActivity.this.babyList.add(0, newBaby);
+                Baby newBaby = new Baby(inputText, );
+                QuestionnaireActivity.this.babyList.add(0, newBaby);
 
                 Log.i(TAG, "added to recyclerview");
                 RecyclerView recyclerView = findViewById(R.id.babies);
