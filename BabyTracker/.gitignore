@@ -31,6 +31,7 @@ captures/
 **/.idea/tasks.xml
 **/.idea/gradle.xml
 **/.idea/dictionaries
+/.idea/caches
 **/.idea/libraries
 **/.idea/markdown-navigator/
 # External native build folder generated in Android Studio 2.2 and later
