@@ -13,7 +13,7 @@ public class Baby {
     int dateOfBirth;
     Boolean immunization;
 
-    public Baby(String name, int dateOfBirth, Boolean immunization) {
+    public Baby(String name, int dateOfBirth, boolean immunization) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.immunization = immunization;

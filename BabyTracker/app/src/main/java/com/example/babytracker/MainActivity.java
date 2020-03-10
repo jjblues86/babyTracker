@@ -8,14 +8,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.UserState;
 import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+import com.apollographql.apollo.GraphQLCall;
+import com.apollographql.apollo.api.Response;
+import com.apollographql.apollo.exception.ApolloException;
 
 import java.util.List;
+
+import javax.annotation.Nonnull;
+
+import type.CreateBabyInput;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
     }
+
     @Override
     protected void onStart() {
         super.onStart();
