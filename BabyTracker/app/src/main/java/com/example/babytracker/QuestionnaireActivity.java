@@ -108,6 +108,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 String dobText = input.getText().toString();
 
                 runMutation(inputText, dobText);
+                Toast.makeText(QuestionnaireActivity.this, "Baby Data Saved", Toast.LENGTH_LONG).show();
+                finish();
 
 //                Baby newBaby = new Baby(inputText, "09/29/1986");
 //                QuestionnaireActivity.this.babyList.add(0, newBaby);
