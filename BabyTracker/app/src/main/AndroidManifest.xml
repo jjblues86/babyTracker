@@ -9,16 +9,25 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_child_icon"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@drawable/ic_child_icon"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".QuestionnaireActivity"></activity>
-        <activity android:name=".NutritionActivity" />
-        <activity android:name=".InvestingActivity" />
-        <activity android:name=".FeedingActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".QuestionnaireActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".NutritionActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".InvestingActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".FeedingActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
