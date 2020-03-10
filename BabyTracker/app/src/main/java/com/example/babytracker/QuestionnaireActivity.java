@@ -109,7 +109,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
                 runMutation(inputText, dobText);
 
-
 //                Baby newBaby = new Baby(inputText, "09/29/1986");
 //                QuestionnaireActivity.this.babyList.add(0, newBaby);
 
