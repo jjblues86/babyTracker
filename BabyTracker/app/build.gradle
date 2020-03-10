@@ -43,5 +43,6 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.16.+'
 
     implementation 'com.amazonaws:aws-android-sdk-cognitoauth:2.16.+'
+    implementation 'com.google.android.material:material:1.1.0'
 
 }
