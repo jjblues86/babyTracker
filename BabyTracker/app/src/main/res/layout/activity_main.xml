@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/addBaby"
         android:layout_width="wrap_content"
@@ -17,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/babies"
         android:name="com.example.babytracker.BabyFragment"
         android:layout_width="378dp"
         android:layout_height="321dp"
@@ -27,50 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-=======
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/picture_frame" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/picture_frame" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="25dp"
-        android:text="Nutrition"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/tools"
-        android:layout_width="60dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="25dp"
-        android:text="Tools"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
->>>>>>> deb0c066136e09858b1cdb35128d867f7a427cb6
+        app:layout_constraintVertical_bias="0.488" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

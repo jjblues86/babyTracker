@@ -10,9 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
-
-<<<<<<< HEAD
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
@@ -20,19 +19,19 @@ import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.annotation.Nonnull;
-
 import type.CreateBabyInput;
-=======
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.SignInUIOptions;
 import com.amazonaws.mobile.client.UserStateDetails;
->>>>>>> deb0c066136e09858b1cdb35128d867f7a427cb6
+
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
@@ -46,14 +45,13 @@ public class QuestionnaireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
 
-<<<<<<< HEAD
         //This is from the amplify doc to enable us to integrate into our app
         mAWSAppSyncClient = AWSAppSyncClient.builder()
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
 
-=======
+
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
                     public void onResult(UserStateDetails userStateDetails) {
@@ -91,12 +89,21 @@ public class QuestionnaireActivity extends AppCompatActivity {
                     }
                 }
         );
->>>>>>> deb0c066136e09858b1cdb35128d867f7a427cb6
 
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText input = findViewById(R.id.newBabyNameLayout);
+                String inputText = input.getText().toString();
+
+//                Baby newBaby = new Baby(inputText);
+//                QuestionnaireActivity.this.babyList.add(0, newBaby);
+
+                Log.i(TAG, "added to recyclerview");
+                RecyclerView recyclerView = findViewById(R.id.babies);
+                recyclerView.getAdapter().notifyItemInserted(0);
+
 //                Context showConfirmation = getApplicationContext();
 //                CharSequence confirmationText = "Submitted";
 //                int duration = Toast.LENGTH_LONG;
@@ -109,13 +116,12 @@ public class QuestionnaireActivity extends AppCompatActivity {
         });
     }
 
-<<<<<<< HEAD
     //connecting to dynamo db
     public void runMutation(String name, String dob, Boolean immunization){
         CreateBabyInput createBabyInput = CreateBabyInput.builder()
                 .name(name)
                 .dob(dob)
-                .immunization(immunization)
+//                .immunization(immunization)
                 .build();
         mAWSAppSyncClient.mutate(CreateBabyMutation.builder().input(createBabyInput).build())
                 .enqueue(addMutationCallback);
@@ -132,7 +138,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
             Log.e("Error", e.toString());
         }
     };
-=======
     @Override
     protected void onResume() {
         super.onResume();
@@ -214,5 +219,4 @@ public class QuestionnaireActivity extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
->>>>>>> deb0c066136e09858b1cdb35128d867f7a427cb6
 }

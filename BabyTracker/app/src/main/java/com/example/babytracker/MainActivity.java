@@ -6,9 +6,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.mobile.client.AWSMobileClient;
@@ -22,6 +26,7 @@ import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
@@ -46,16 +51,27 @@ public class MainActivity extends AppCompatActivity {
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
 
+        this.babyList = new ArrayList<>();
+
+        for(Baby baby : babyList){
+            Log.i(TAG, baby.name + baby.dateOfBirth);
+        }
+
+
+        RecyclerView recyclerView = findViewById(R.id.babies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+
         //Button to take you the questionnaire activity
-//        final Button questionnaireButton = findViewById(R.id.addBaby);
-//        questionnaireButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent goToQuestionnaire = new Intent(MainActivity.this, QuestionnaireActivity.class);
-//                MainActivity.this.startActivity(goToQuestionnaire);
-//            }
-//        });
+        final Button questionnaireButton = findViewById(R.id.addBaby);
+        questionnaireButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent goToQuestionnaire = new Intent(MainActivity.this, QuestionnaireActivity.class);
+                MainActivity.this.startActivity(goToQuestionnaire);
+            }
+        });
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
 

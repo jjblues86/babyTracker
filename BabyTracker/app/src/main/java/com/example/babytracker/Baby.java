@@ -11,12 +11,12 @@ public class Baby {
 
     String name;
     int dateOfBirth;
-    Boolean immunization;
+//    Boolean immunization;
 
     public Baby(String name, int dateOfBirth, boolean immunization) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.immunization = immunization;
+//        this.immunization = immunization;
     }
 
     public String getName() {
@@ -27,7 +27,7 @@ public class Baby {
         return dateOfBirth;
     }
 
-    public Boolean getImmunization() {
-        return immunization;
-    }
+//    public Boolean getImmunization() {
+//        return immunization;
+//    }
 }
