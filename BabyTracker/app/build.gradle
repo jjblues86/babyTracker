@@ -44,6 +44,10 @@ dependencies {
     implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.16.+'
 
     implementation 'com.amazonaws:aws-android-sdk-cognitoauth:2.16.+'
+<<<<<<< HEAD
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+=======
+    implementation 'com.google.android.material:material:1.1.0'
+>>>>>>> deb0c066136e09858b1cdb35128d867f7a427cb6
 
 }

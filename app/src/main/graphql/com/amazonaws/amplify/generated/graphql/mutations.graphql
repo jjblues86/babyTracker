@@ -1,0 +1,34 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateBaby(
+  $input: CreateBabyInput!
+  $condition: ModelBabyConditionInput
+) {
+  createBaby(input: $input, condition: $condition) {
+    id
+    name
+    dob
+    immunization
+  }
+}
+mutation UpdateBaby(
+  $input: UpdateBabyInput!
+  $condition: ModelBabyConditionInput
+) {
+  updateBaby(input: $input, condition: $condition) {
+    id
+    name
+    dob
+    immunization
+  }
+}
+mutation DeleteBaby(
+  $input: DeleteBabyInput!
+  $condition: ModelBabyConditionInput
+) {
+  deleteBaby(input: $input, condition: $condition) {
+    id
+    name
+    dob
+    immunization
+  }
+}

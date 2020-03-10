@@ -1,0 +1,6 @@
+type Baby @model {
+  id: ID!
+  name: String!
+  dob: String
+  immunization: Boolean
+}
