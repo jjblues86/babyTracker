@@ -207,13 +207,17 @@ public class QuestionnaireActivity extends AppCompatActivity {
                     Log.i(TAG, "successfully uploaded");
                     imageUrl = "https://" + uploadObserver.getBucket() + uploadObserver.getKey();
 
-                    Log.i(TAG, "path to the s3 image please" + "https://" + uploadObserver.getBucket() + "/public" + uuid);
-
-
-                    Log.i(TAG, "ACTUAL stuff" + uploadObserver.getBucket() + uploadObserver.getKey());
+//
+                    Log.i(TAG, "path to the s3 image please" + "https://" + uploadObserver.getBucket() + "/" + uploadObserver.getKey());
+//
+//
+//                    Log.i(TAG, "ACTUAL stuff" + uploadObserver.getBucket() + uploadObserver.getKey());
 
                 }
             }
+
+//            https://babytrack2110045-baby.s3.amazonaws.com/public/0e00c2af-5c45-46bb-ab3a-e75d59ad09e1
+
 
             @Override
             public void onProgressChanged(int id, long bytesCurrent, long bytesTotal) {
@@ -296,13 +300,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
         // Figure out what to do based on the intent type
         String typeActivity = intent.getType();
-
-        Log.i(TAG, "intent POS" + intent.toString());
         if (typeActivity != null && typeActivity.contains("image/")) {
 
             Uri imageUrl = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-            Log.i(TAG, "image from external share uri: " + imageUrl);
-            Log.i(TAG, "maybe a path? " + getPath(imageUrl));
 //            uploadWithTransferUtility(imageUrl);
 
         }

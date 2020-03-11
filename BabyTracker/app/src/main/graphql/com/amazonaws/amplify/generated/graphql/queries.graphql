@@ -4,6 +4,7 @@ query GetBaby($id: ID!) {
     id
     name
     dob
+    imageUrl
   }
 }
 query ListBabys(
@@ -16,6 +17,7 @@ query ListBabys(
       id
       name
       dob
+      imageUrl
     }
     nextToken
   }

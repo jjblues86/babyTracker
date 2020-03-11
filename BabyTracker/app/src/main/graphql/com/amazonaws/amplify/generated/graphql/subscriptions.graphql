@@ -4,6 +4,7 @@ subscription OnCreateBaby {
     id
     name
     dob
+    imageUrl
   }
 }
 subscription OnUpdateBaby {
@@ -11,6 +12,7 @@ subscription OnUpdateBaby {
     id
     name
     dob
+    imageUrl
   }
 }
 subscription OnDeleteBaby {
@@ -18,5 +20,6 @@ subscription OnDeleteBaby {
     id
     name
     dob
+    imageUrl
   }
 }
