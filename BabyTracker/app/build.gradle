@@ -22,6 +22,7 @@ android {
 apply plugin: 'com.amazonaws.appsync'
 
 dependencies {
+    implementation 'com.squareup.picasso:picasso:2.71828'
     //Base SDK
     implementation 'com.amazonaws:aws-android-sdk-core:2.15.+'
     //AppSync SDK

@@ -1,24 +1,20 @@
 package com.example.babytracker;
 
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-//import com.example.babytracker.BabyFragment.OnListFragmentInteractionListener;
-import com.example.babytracker.dummy.DummyContent.DummyItem;
-
+import com.example.babytracker.BabyFragment.OnListFragmentInteractionListener;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecyclerViewAdapter.MyBabyViewHolder> {
 
     private final List<Baby> babyList;
@@ -50,8 +46,11 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
     @NonNull
     @Override
     public MyBabyRecyclerViewAdapter.MyBabyViewHolder onCreateViewHolder( @NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_baby, parent, false);
+
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_baby, parent, false);
+
+        TextView taskTitle = parent.textViewTitle;
+        taskTitle.setText(dataSet.get(RVIndex).getName());
 
         //this gives me access to the view
         final MyBabyViewHolder viewHolder = new MyBabyViewHolder(view);
@@ -61,13 +60,43 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
                 mListener.onClickOnBabyCallback(viewHolder.baby);
             }
         });
+
+        parent.itemView.setOnClickListener((event) -> {
+
+            Context i = event.getContext();
+            String potatoTitle = taskTitle.getText().toString();
+            Intent intentionalToDetails = new Intent(i, BabyDetails.class);
+            intentionalToDetails.putExtra("taskName", potatoTitle);
+            i.startActivity(intentionalToDetails);
+        });
         return viewHolder;
     }
+
+//    @SuppressLint("SetTextI18n")
+//    @Override
+//    public void onBindViewHolder(final TaskHolder holder, final int RVIndex) {
+//
+//        TextView taskTitle = holder.textViewTitle;
+//        taskTitle.setText(dataSet.get(RVIndex).getName());
+//
+//        TextView taskState = holder.textViewPriority;
+//        taskState.setText("Priority: " + dataSet.get(RVIndex).getPriority());
+//
+//        // Credit: The illustrious TA James assisted me here
+//        holder.itemView.setOnClickListener((event) -> {
+//
+//            Context context = event.getContext();
+//            String potatoTitle = taskTitle.getText().toString();
+//            Intent intentionalToDetails = new Intent(context, TaskDetail.class);
+//            intentionalToDetails.putExtra("taskName", potatoTitle);
+//            context.startActivity(intentionalToDetails);
+//        });
+//    }
 
     @Override
     public void onBindViewHolder(@NonNull MyBabyViewHolder holder, int position) {
         holder.babyNameView.setText(babyList.get(position).name);
-        holder.babyDateOfBirthView.setText("$" + babyList.get(position).dateOfBirth);
+        holder.babyDateOfBirthView.setText(babyList.get(position).dateOfBirth);
         holder.baby = babyList.get(position);
     }
 
