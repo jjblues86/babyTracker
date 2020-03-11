@@ -41,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(goToQuestionnaire);
             }
         });
+
+        // Button that takes you to location activity
+        final Button locationButton = findViewById(R.id.btnLocation);
+        locationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToLocationActivity = new Intent(MainActivity.this, ImmunizationMapsActivity.class);
+                MainActivity.this.startActivity(goToLocationActivity);
+            }
+
+
+        });
     }
     @Override
     protected void onStart() {
