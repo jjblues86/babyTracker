@@ -7,7 +7,6 @@ mutation CreateBaby(
     id
     name
     dob
-    immunization
   }
 }
 mutation UpdateBaby(
@@ -18,7 +17,6 @@ mutation UpdateBaby(
     id
     name
     dob
-    immunization
   }
 }
 mutation DeleteBaby(
@@ -29,6 +27,5 @@ mutation DeleteBaby(
     id
     name
     dob
-    immunization
   }
 }
