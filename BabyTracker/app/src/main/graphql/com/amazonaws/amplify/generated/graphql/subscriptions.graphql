@@ -4,7 +4,7 @@ subscription OnCreateBaby {
     id
     name
     dob
-    immunization
+    imageUrl
   }
 }
 subscription OnUpdateBaby {
@@ -12,7 +12,7 @@ subscription OnUpdateBaby {
     id
     name
     dob
-    immunization
+    imageUrl
   }
 }
 subscription OnDeleteBaby {
@@ -20,6 +20,6 @@ subscription OnDeleteBaby {
     id
     name
     dob
-    immunization
+    imageUrl
   }
 }
