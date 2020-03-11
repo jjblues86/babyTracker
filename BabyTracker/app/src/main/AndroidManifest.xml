@@ -20,10 +20,7 @@
         <activity android:name=".NutritionActivity"
             android:parentActivityName=".MainActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".InvestingActivity"
-            android:parentActivityName=".MainActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".FeedingActivity"
+        <activity android:name=".AddNotificationActivity"
             android:parentActivityName=".MainActivity"
             android:launchMode="singleTop" />
         <activity android:name=".MainActivity"

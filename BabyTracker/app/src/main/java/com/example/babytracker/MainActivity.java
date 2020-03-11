@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.amplify.generated.graphql.ListBabysQuery;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
@@ -35,8 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-
-import type.CreateBabyInput;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -253,9 +250,9 @@ public class MainActivity extends AppCompatActivity {
             this.startActivity(goToAddTask);
             return (true);
 
-        } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent (this, FeedingActivity.class);
-            this.startActivity(goToAllTask);
+        } else if (itemId == R.id.widget_to_notification) {
+            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
+            this.startActivity(goToNotification);
             return (true);
 
         } else if (itemId == R.id.logout_button) {

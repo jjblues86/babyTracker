@@ -67,7 +67,7 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
     @Override
     public void onBindViewHolder(@NonNull MyBabyViewHolder holder, int position) {
         holder.babyNameView.setText(babyList.get(position).name);
-        holder.babyDateOfBirthView.setText("$" + babyList.get(position).dateOfBirth);
+        holder.babyDateOfBirthView.setText("" + babyList.get(position).dateOfBirth);
         holder.baby = babyList.get(position);
     }
 

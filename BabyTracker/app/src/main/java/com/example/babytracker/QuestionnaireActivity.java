@@ -1,13 +1,8 @@
 package com.example.babytracker;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,21 +11,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
-import com.amazonaws.amplify.generated.graphql.ListBabysQuery;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
-import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Nonnull;
 import type.CreateBabyInput;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
@@ -105,7 +95,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 EditText input = findViewById(R.id.newBabyNameActual);
                 EditText dobInput = findViewById(R.id.newBabyDOBActual);
                 String inputText = input.getText().toString();
-                String dobText = input.getText().toString();
+                String dobText = dobInput.getText().toString();
 
                 runMutation(inputText, dobText);
 
@@ -222,9 +212,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             this.startActivity(goToAddTask);
             return (true);
 
-        } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent (this, FeedingActivity.class);
-            this.startActivity(goToAllTask);
+        } else if (itemId == R.id.widget_to_notification) {
+//            Intent goToAllTask = new Intent (this, FeedingActivity.class);
+//            this.startActivity(goToAllTask);
             return (true);
 
         } else if (itemId == R.id.logout_button) {
