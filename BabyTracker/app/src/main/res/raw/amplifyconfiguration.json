@@ -6,11 +6,20 @@
             "awsAPIPlugin": {
                 "babytracker": {
                     "endpointType": "GraphQL",
-                    "endpoint": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
-                    "region": "us-west-2",
+                    "endpoint": "https://fliqrdylsvc55iafeczvrjzjyy.appsync-api.us-east-1.amazonaws.com/graphql",
+                    "region": "us-east-1",
                     "authorizationType": "API_KEY",
-                    "apiKey": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
+                    "apiKey": "da2-t4ynnjxpvzfyzoh5qwlniu5i2q"
                 }
+            }
+        }
+    },
+    "storage": {
+        "plugins": {
+            "awsS3StoragePlugin": {
+                "bucket": "babytrack2110045-baby",
+                "region": "us-east-1",
+                "defaultAccessLevel": "guest"
             }
         }
     }
