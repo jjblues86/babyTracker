@@ -56,6 +56,9 @@ public class ImmunizationMapsActivity extends FragmentActivity implements OnMapR
     private LocationCallback locationCallback;
     private Location lastLocation;
     private Marker currentUserLocationMarker;
+    private double latitude, longitude;
+    private int proximityRadius = 10000;
+
 
     private static final int Request_User_Location_Code = 99;
 
@@ -105,6 +108,11 @@ public class ImmunizationMapsActivity extends FragmentActivity implements OnMapR
 
     @Override
     public void onMapReady(GoogleMap map) {
+
+        String hospital = "hospital";
+        String url = getUrl(latitude, longitude, hospital);
+        Object transferData[] = new Object[2];
+        GetNearbyPediatricianLocations getNearbyPediatricianLocations = new GetNearbyPediatricianLocations();
         mMap = map;
 
         if(ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -113,6 +121,26 @@ public class ImmunizationMapsActivity extends FragmentActivity implements OnMapR
             fusedLocationClient.requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper());
 
         }
+        transferData[0] = mMap;
+        transferData[1] = url;
+
+        getNearbyPediatricianLocations.execute(transferData);
+        Toast.makeText(this, "Searching for Nearby Pediatrician...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Showing for Nearby Pediatrician...", Toast.LENGTH_SHORT).show();
+    }
+
+    private String getUrl(double latitude, double longitude, String hospital) {
+        StringBuilder googleUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
+        googleUrl.append("location" + latitude + "," + longitude);
+        googleUrl.append("&radius=" + proximityRadius);
+        googleUrl.append("&type=" + hospital);
+        googleUrl.append("&sensor=true");
+        googleUrl.append("&key=" + "AIzaSyBD7ZuMMagZdGPmccF5tdCjvltLp4ZpPD8");
+
+        Log.d("GoogleMapsActivity", "url =  " + googleUrl.toString());
+
+        return googleUrl.toString();
+
     }
 
     public boolean checkUserLocationPermission() {
@@ -159,6 +187,11 @@ public class ImmunizationMapsActivity extends FragmentActivity implements OnMapR
     @Override
     public void onLocationChanged(Location location) {
         lastLocation = location;
+
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
+
         if(currentUserLocationMarker != null) {
             currentUserLocationMarker.remove();
         }
@@ -171,7 +204,7 @@ public class ImmunizationMapsActivity extends FragmentActivity implements OnMapR
 
         currentUserLocationMarker = mMap.addMarker(markerOptions);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(14));
 
         if(googleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
