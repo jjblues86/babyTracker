@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Baby Tracker</string>
+
+<string-array name="names">
+    <item>Feeding</item>
+    <item>Immunization</item>
+    <item>Pediatrician Appointment</item>
+    <!--        <item></item>-->
+    <!--        <item></item>-->
+</string-array>
 </resources>

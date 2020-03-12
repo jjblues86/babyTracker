@@ -34,10 +34,15 @@
             "authenticationFlowType": "USER_SRP_AUTH"
         }
     },
-    "S3TransferUtility": {
+    "PinpointAnalytics": {
         "Default": {
-            "Bucket": "babytrack2110045-baby",
-            "Region": "us-east-1"
+            "AppId": "7d5fdd704ff645ba93fc5561130feb23",
+            "Region": "us-west-2"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "us-west-2"
         }
     }
 }

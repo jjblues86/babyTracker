@@ -41,8 +41,6 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
             this.view = view;
             babyNameView = (TextView) view.findViewById(R.id.name);
             babyDateOfBirthView = (TextView) view.findViewById(R.id.dateOfBirth);
-//            this.babyNameView = babyNameView;
-//            this.babyDateOfBirthView = babyDateOfBirthView;
         }
     }
 
@@ -63,36 +61,12 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
         });
         return viewHolder;
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyBabyViewHolder holder, int position) {
         holder.babyNameView.setText(babyList.get(position).name);
-        holder.babyDateOfBirthView.setText("$" + babyList.get(position).dateOfBirth);
+        holder.babyDateOfBirthView.setText("" + babyList.get(position).dateOfBirth);
         holder.baby = babyList.get(position);
     }
-
-    //Given the holder and the position index, fill in that view with right data for that position
-//    @Override
-//    public void onBindViewHolder(final ViewHolder holder, int position) {
-//        holder.babyNameView = mValues.get(position);
-//        holder.mNameView.setText(mValues.get(position).getName());
-////        holder.mDateOfBirthView.setText("" + mValues.get(position).getDateOfBirth());
-////        holder.mImmunizationView.(mValues.get(position).getImmunization());
-//
-//
-//        holder.mView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.i(TAG, "it was clicked");
-////                if (null != mListener) {
-////                    // Notify the active callbacks interface (the activity, if the
-////                    // fragment is attached to one) that an item has been selected.
-////                    mListener.onListFragmentInteraction(holder.mItem);
-////                }
-//            }
-//        });
-//    }
-
     @Override
     public int getItemCount() {
 
@@ -102,25 +76,4 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
     public static interface OnListFragmentInteractionListener{
         public void onClickOnBabyCallback(Baby baby);
     }
-
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public final View mView;
-//        public final TextView mNameView;
-//        public final TextView mDateOfBirthView;
-////        public final TextView mImmunizationView;
-//        public Baby mItem;
-//
-//        public ViewHolder(View view) {
-//            super(view);
-//            mView = view;
-//            mNameView = (TextView) view.findViewById(R.id.name);
-//            mDateOfBirthView = (TextView) view.findViewById(R.id.dateOfBirth);
-////            mImmunizationView = (TextView) view.findViewById(R.id.immunization);
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return super.toString() + " '" + mDateOfBirthView.getText() + "'";
-//        }
-//    }
 }

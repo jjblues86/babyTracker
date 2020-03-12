@@ -11,8 +11,8 @@
         android:title="New Baby"
         app:showAsAction="collapseActionView" />
     <item
-        android:id="@+id/widget_to_settings"
-        android:title="Settings"
+        android:id="@+id/widget_to_notification"
+        android:title="Notification"
         app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/logout_button"
