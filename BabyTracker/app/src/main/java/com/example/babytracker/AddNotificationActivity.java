@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 
@@ -25,15 +25,18 @@ public class AddNotificationActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManagerCompat;
     private EditText notificationTime;
     private EditText notificationDate;
+    private Spinner notificationSpinner;
 
     private AWSAppSyncClient mAWSAppSyncClient;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addnotification);
 
         notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationSpinner = findViewById(R.id.spinner);
         notificationTime = findViewById(R.id.date);
         notificationDate = findViewById(R.id.time);
 
@@ -51,39 +54,25 @@ public class AddNotificationActivity extends AppCompatActivity {
         babyAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         notifications.setAdapter(babyAdapter);
         createNotificationChannel();
-
-
-        // Create an explicit intent for an Activity in your app
-//            Intent intent = new Intent(this, MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-//            //creating notifications
-//            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-////                    .setSmallIcon(R.drawable.notification_icon)
-////                    .setContentTitle(textTitle)
-////                    .setContentText(textContent)
-//                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-//
-//            // notificationId is a unique int for each notification that you must define
-//            notificationManager.notify((int)(Math.random() * 100.0), builder.build());
-
-
     }
 
     public void setNotification(View view){
+        int id = (int) (Math.random() * 100.0);
+        String spinner = notificationSpinner.getSelectedItem().toString();
         String time = notificationTime.getText().toString();
         String date = notificationDate.getText().toString();
         //creating notifications
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_plus_one_black_24dp)
+//                .setContentTitle(spinner)
                 .setContentTitle(time)
-                .setContentText(date)
+                .setContentText(spinner)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)//if device is in dono disturb mode
                 .build();
-        notificationManagerCompat.notify(1, notification);
-//            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(id, notification);
+        Intent gotBackToMain =new Intent(this, MainActivity.class);
+        this.startActivity(gotBackToMain);
     }
 
     private void createNotificationChannel() {
@@ -100,8 +89,6 @@ public class AddNotificationActivity extends AppCompatActivity {
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-
-
         }
 
     }

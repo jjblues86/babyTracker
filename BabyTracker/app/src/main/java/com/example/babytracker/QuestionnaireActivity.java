@@ -16,12 +16,10 @@ import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
-
 import java.util.List;
 import javax.annotation.Nonnull;
 import type.CreateBabyInput;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.SignInUIOptions;
@@ -45,10 +43,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
-//        getBabyItems();
-
-
-
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
@@ -98,23 +92,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 String dobText = dobInput.getText().toString();
 
                 runMutation(inputText, dobText);
-
-
-//                Baby newBaby = new Baby(inputText, "09/29/1986");
-//                QuestionnaireActivity.this.babyList.add(0, newBaby);
-
-
-                //TODO: add baby to DB
-                //TODO: On main activity, load babylist from DB
-
-//                Context showConfirmation = getApplicationContext();
-//                CharSequence confirmationText = "Submitted";
-//                int duration = Toast.LENGTH_LONG;
-//                Toast toast = Toast.makeText(showConfirmation, confirmationText, duration);
-//                toast.show();
-//                toast.setGravity(Gravity.TOP|Gravity.RIGHT, 350, 350);
-//                String inputText =  input.getText().toString();
-//                runMutation(inputText);
             }
         });
     }
@@ -124,7 +101,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
         CreateBabyInput createBabyInput = CreateBabyInput.builder()
                 .name(name)
                 .dob(dob)
-//                .immunization(immunization)
                 .build();
         mAWSAppSyncClient.mutate(CreateBabyMutation.builder().input(createBabyInput).build())
                 .enqueue(addMutationCallback);
@@ -134,8 +110,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
         @Override
         public void onResponse(@Nonnull Response<CreateBabyMutation.Data> response) {
             Log.i("Results", "Added Todo");
-//            getBabyItems();
-
         }
 
         @Override

@@ -1,5 +1,6 @@
 package com.example.babytracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,9 +28,14 @@ import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
+import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration;
+import com.amazonaws.mobileconnectors.pinpoint.PinpointManager;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     String TAG = "MainActivity";
     private AWSAppSyncClient mAWSAppSyncClient;
+    private static PinpointManager pinpointManager;
     List<Baby> babyList;
 
 
@@ -46,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialize PinpointManager
+        getPinpointManager(getApplicationContext());
 
         //This is from the amplify doc to enable us to integrate into our app
         mAWSAppSyncClient = AWSAppSyncClient.builder()
@@ -114,9 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAWSAppSyncClient.query(ListBabysQuery.builder().build())
                 .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
-                .enqueue(tasksCallback);
+                .enqueue(babyCallback);
     }
-    private GraphQLCall.Callback<ListBabysQuery.Data> tasksCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
+    private GraphQLCall.Callback<ListBabysQuery.Data> babyCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
         @Override
         public void onResponse(@Nonnull Response<ListBabysQuery.Data> response)
         {
@@ -263,6 +274,57 @@ public class MainActivity extends AppCompatActivity {
         return(super.onOptionsItemSelected(item));
     }
 
+    public static PinpointManager getPinpointManager(final Context applicationContext) {
+        if (pinpointManager == null) {
+            final AWSConfiguration awsConfig = new AWSConfiguration(applicationContext);
+            AWSMobileClient.getInstance().initialize(applicationContext, awsConfig, new Callback<UserStateDetails>() {
+                @Override
+                public void onResult(UserStateDetails userStateDetails) {
+                    Log.i("INIT", userStateDetails.getUserState().toString());
+                }
 
+                @Override
+                public void onError(Exception e) {
+                    Log.e("INIT", "Initialization error.", e);
+                }
+            });
+
+            PinpointConfiguration pinpointConfig = new PinpointConfiguration(
+                    applicationContext,
+                    AWSMobileClient.getInstance(),
+                    awsConfig);
+
+            pinpointManager = new PinpointManager(pinpointConfig);
+
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        public String TAG = "MAIN.PINPOINT";
+
+                        @Override
+                        public void onComplete(@NonNull com.google.android.gms.tasks.Task<InstanceIdResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "getInstanceId failed", task.getException());
+                                return;
+                            }
+                            final String token = task.getResult().getToken();
+                            Log.d(TAG, "Registering push notifications token: " + token);
+                            pinpointManager.getNotificationClient().registerDeviceToken(token);
+
+                        }
+
+//                        @Override
+//                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                            if (!task.isSuccessful()) {
+//                                Log.w(TAG, "getInstanceId failed", task.getException());
+//                                return;
+//                            }
+//                            final String token = task.getResult().getToken();
+//                            Log.d(TAG, "Registering push notifications token: " + token);
+//                            pinpointManager.getNotificationClient().registerDeviceToken(token);
+//                        }
+                    });
+        }
+        return pinpointManager;
+    }
 }
 

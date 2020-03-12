@@ -4,7 +4,6 @@ query GetBaby($id: ID!) {
     id
     name
     dob
-    immunization
   }
 }
 query ListBabys(
@@ -17,7 +16,6 @@ query ListBabys(
       id
       name
       dob
-      immunization
     }
     nextToken
   }
