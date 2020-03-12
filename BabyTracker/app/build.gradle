@@ -20,8 +20,12 @@ android {
 }
 
 apply plugin: 'com.amazonaws.appsync'
+//apply plugin: 'com.google.gms.google-services'
 
 dependencies {
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    //noinspection GradleCompatible
+    implementation "com.android.support:support-compat:28.0.0"
     //Base SDK
     implementation 'com.amazonaws:aws-android-sdk-core:2.15.+'
     //AppSync SDK

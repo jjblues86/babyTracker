@@ -1,6 +1,6 @@
 {
     "identityPoolName": "babytracker0e020013_identitypool_0e020013",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "babytr0e020013",
     "userPoolName": "babytracker0e020013_userpool_0e020013",
     "autoVerifiedAttributes": [
