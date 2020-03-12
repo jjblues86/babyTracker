@@ -25,14 +25,14 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/baby_Detail_Description"
+        android:id="@+id/date_of_birth"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Details go here"
+        android:text="DOB goes here"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="TODO"
-        app:layout_constraintBottom_toTopOf="@+id/baby_Detail_Description"
+        app:layout_constraintBottom_toTopOf="@+id/date_of_birth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/baby_name"
