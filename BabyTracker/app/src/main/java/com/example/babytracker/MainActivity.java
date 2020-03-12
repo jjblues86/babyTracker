@@ -167,6 +167,22 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.i(TAG, "onResume");
 
+        mAWSAppSyncClient = AWSAppSyncClient.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
+                .build();
+        getBabyItems();
+
+        this.babyList = new ArrayList<>();
+
+        for(Baby baby : babyList){
+            Log.i(TAG, baby.name + baby.dateOfBirth);
+        }
+
+        RecyclerView recyclerView = findViewById(R.id.babies);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
                     public void onResult(UserStateDetails userStateDetails) {

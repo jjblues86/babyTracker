@@ -71,7 +71,7 @@
 		"apibabytracker": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"Parameters": {
 					"CreateAPIKey": 1,
 					"AppSyncApiName": "babytracker",
@@ -86,7 +86,7 @@
 		"authbabytracker0e020013": {
 			"Type": "AWS::CloudFormation::Stack",
 			"Properties": {
-				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
+				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "babytracker0e020013_identitypool_0e020013",
 					"allowUnauthenticatedIdentities": true,
@@ -126,7 +126,41 @@
 					"useDefault": "default",
 					"userPoolGroupList": "",
 					"dependsOn": "",
-					"env": "dev"
+					"env": "baby"
+				}
+			}
+		},
+		"storages3e296ed89": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"Parameters": {
+					"bucketName": "babytrack2",
+					"authPolicyName": "s3_amplify_e296ed89",
+					"unauthPolicyName": "s3_amplify_e296ed89",
+					"authRoleName": {
+						"Ref": "AuthRoleName"
+					},
+					"unauthRoleName": {
+						"Ref": "UnauthRoleName"
+					},
+					"selectedGuestPermissions": "s3:GetObject,s3:ListBucket",
+					"selectedAuthenticatedPermissions": "s3:PutObject,s3:GetObject,s3:ListBucket",
+					"s3PermissionsAuthenticatedPublic": "s3:PutObject,s3:GetObject",
+					"s3PublicPolicy": "Public_policy_cac5636d",
+					"s3PermissionsAuthenticatedUploads": "s3:PutObject",
+					"s3UploadsPolicy": "Uploads_policy_cac5636d",
+					"s3PermissionsAuthenticatedProtected": "s3:PutObject,s3:GetObject",
+					"s3ProtectedPolicy": "Protected_policy_cac5636d",
+					"s3PermissionsAuthenticatedPrivate": "s3:PutObject,s3:GetObject",
+					"s3PrivatePolicy": "Private_policy_cac5636d",
+					"AuthenticatedAllowList": "ALLOW",
+					"s3ReadPolicy": "read_policy_cac5636d",
+					"s3PermissionsGuestPublic": "DISALLOW",
+					"s3PermissionsGuestUploads": "DISALLOW",
+					"GuestAllowList": "DISALLOW",
+					"triggerFunction": "NONE",
+					"env": "baby"
 				}
 			}
 		},
