@@ -1,33 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.babytracker">
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permisson.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_child_icon"
-
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_child_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BabyDetails"></activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".ImmunizationMapsActivity2"
+            android:label="@string/title_activity_immunization_maps" />
         <activity
             android:name=".QuestionnaireActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NutritionActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".InvestingActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity
@@ -39,6 +57,7 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,7 +65,7 @@
         <service
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
             android:enabled="true" />
-
         <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
+
 </manifest>

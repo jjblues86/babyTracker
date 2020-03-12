@@ -10,6 +10,11 @@
         android:id="@+id/widget_to_profile"
         android:title="New Baby"
         app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/widget_to_location"
+        android:title="Location"
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/widget_to_settings"
         android:title="Settings"
