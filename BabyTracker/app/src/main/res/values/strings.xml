@@ -1,4 +1,18 @@
+<!--<resources>-->
+<!--    <string name="app_name">Baby Tracker</string>-->
+<!--    <string name="title_activity_immunization_maps">Map</string>-->
+<!--</resources>-->
+
 <resources>
     <string name="app_name">Baby Tracker</string>
+    <string-array name="names">
+        <item>Feeding</item>
+        <item>Immunization</item>
+        <item>Pediatrician Appointment</item>
+
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+    </string-array>
     <string name="title_activity_immunization_maps">Map</string>
+
 </resources>

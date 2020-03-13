@@ -41,14 +41,10 @@ public class BabyDetails extends AppCompatActivity {
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
-        //
-
         ImageView baby_image = findViewById(R.id.baby_image);
 
-//        Picasso.get().load(imageUrl).into(baby_image);
         String pathOnS3 = "https://bucketfortasks123331-taskenv.s3-us-west-2.amazonaws.com/public/public/c803c223-3ea7-46ca-ba0e-1dfc9f14de7d";
         Picasso.get().load(pathOnS3).into(baby_image);
-        ///
 
         Intent showBabyID = getIntent();
         String showBabyName = showBabyID.getStringExtra("baby_name");
@@ -57,11 +53,6 @@ public class BabyDetails extends AppCompatActivity {
         String showDOBName = showBabyID.getStringExtra("baby_dob");
         TextView showDOBName2 = findViewById(R.id.date_of_birth);
 
-
-//        String idFrom = showBabyID.getStringExtra("baby_id");
-//        TextView idFrom = findViewById(R.id.date_of_birth);
-
-//        Log.i("voytov", idFrom);
 
         showBabyName2.setText(showBabyName);
         showDOBName2.setText(showDOBName);
@@ -110,7 +101,6 @@ public class BabyDetails extends AppCompatActivity {
                 }
         );
     }
-
 
     // Allow nav_and_actions to be utilized
     @Override

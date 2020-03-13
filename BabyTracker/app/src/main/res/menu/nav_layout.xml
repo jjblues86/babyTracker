@@ -19,10 +19,19 @@
         android:id="@+id/widget_to_settings"
         android:title="Settings"
         app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/widget_to_notification"
+        android:title="Notifications"
+        app:showAsAction="collapseActionView" />
+
+
     <item
         android:id="@+id/logout_button"
         android:title="Logout"
         app:showAsAction="collapseActionView" />
+
+
 </menu>
 
 

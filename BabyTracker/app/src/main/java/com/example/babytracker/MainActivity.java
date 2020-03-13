@@ -292,6 +292,12 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
             this.startActivity(goToAllTask);
             return (true);
 
+
+        } else if (itemId == R.id.widget_to_notification) {
+            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
+            this.startActivity(goToNotification);
+            return (true);
+
         } else if (itemId == R.id.logout_button) {
             Toast.makeText(MainActivity.this, "Logging Out User", Toast.LENGTH_LONG).show();
             AWSMobileClient.getInstance().signOut();
