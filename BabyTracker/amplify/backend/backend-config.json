@@ -25,6 +25,7 @@
             "customAuth": false
         }
     },
+<<<<<<< HEAD
     "storage": {
         "s3e296ed89": {
             "service": "S3",
@@ -33,6 +34,10 @@
     },
     "notifications": {
         "BabyTrackerkllRN": {
+=======
+    "notifications": {
+        "BabyTracker5sbOa": {
+>>>>>>> jj
             "service": "Pinpoint",
             "channels": [
                 "FCM"

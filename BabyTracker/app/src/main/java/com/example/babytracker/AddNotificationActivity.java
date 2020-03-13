@@ -10,16 +10,10 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 public class AddNotificationActivity extends AppCompatActivity {
@@ -34,7 +28,7 @@ public class AddNotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_notification);
+        setContentView(R.layout.activity_addnotification);
         notificationManagerCompat = NotificationManagerCompat.from(this);
         notificationSpinner = findViewById(R.id.spinner);
         notificationTime = findViewById(R.id.date);
@@ -85,51 +79,5 @@ public class AddNotificationActivity extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-    }
-    // Allow nav_and_actions to be utilized
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.nav_layout, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int itemId = item.getItemId();
-
-        if (itemId == R.id.widget_to_main) {
-            Intent goToMain = new Intent(this, MainActivity.class);
-            this.startActivity(goToMain);
-            return (true);
-
-        } else if (itemId == R.id.widget_to_profile) {
-            Intent goToAddTask = new Intent(this, QuestionnaireActivity.class);
-            this.startActivity(goToAddTask);
-            return (true);
-
-        } else if (itemId == R.id.widget_to_location) {
-            Intent goToLocation = new Intent(this, ImmunizationMapsActivity2.class);
-            this.startActivity(goToLocation);
-            return (true);
-
-        } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent(this, FeedingActivity.class);
-            this.startActivity(goToAllTask);
-            return (true);
-
-
-        } else if (itemId == R.id.widget_to_notification) {
-            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
-            this.startActivity(goToNotification);
-            return (true);
-
-        } else if (itemId == R.id.logout_button) {
-            Toast.makeText(AddNotificationActivity.this, "Logging Out User", Toast.LENGTH_LONG).show();
-            AWSMobileClient.getInstance().signOut();
-            finish();
-        }
-        return (super.onOptionsItemSelected(item));
     }
 }

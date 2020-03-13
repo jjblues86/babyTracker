@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.babytracker">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -49,20 +50,36 @@
             android:name=".NutritionActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
+<!--        <activity-->
+<!--            android:name=".FeedingActivity"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:parentActivityName=".MainActivity" />-->
         <activity
-            android:name=".FeedingActivity"
+            android:name=".ImmunizationMapsActivity2"
+            android:label="@string/title_activity_immunization_maps"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".QuestionnaireActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".NutritionActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity"
+            tools:ignore="DuplicateActivity" />
+<!--        <activity-->
+<!--            android:name=".FeedingActivity"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:parentActivityName=".MainActivity" />-->
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
             android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
             android:enabled="true" />

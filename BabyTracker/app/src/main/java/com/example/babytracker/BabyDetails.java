@@ -121,10 +121,10 @@ public class BabyDetails extends AppCompatActivity {
             Intent goToAddTask = new Intent(this, QuestionnaireActivity.class);
             this.startActivity(goToAddTask);
             return (true);
-        } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent(this, FeedingActivity.class);
-            this.startActivity(goToAllTask);
-            return (true);
+//        } else if (itemId == R.id.widget_to_settings) {
+//            Intent goToAllTask = new Intent(this, FeedingActivity.class);
+//            this.startActivity(goToAllTask);
+//            return (true);
         } else if (itemId == R.id.logout_button) {
             Toast.makeText(BabyDetails.this, "Logging Out User", Toast.LENGTH_LONG).show();
             AWSMobileClient.getInstance().signOut();

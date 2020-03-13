@@ -77,9 +77,9 @@
 					"AppSyncApiName": "babytracker",
 					"DynamoDBBillingMode": "PAY_PER_REQUEST",
 					"DynamoDBEnableServerSideEncryption": "false",
-					"S3DeploymentBucket": "amplify-babytracker-baby-110045-deployment",
-					"S3DeploymentRootKey": "amplify-appsync-files/81f3da8617201f3e22977d58436784eb4652ee0b",
-					"env": "baby"
+					"S3DeploymentBucket": "amplify-babytracker-dev-100554-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/f8309f32adba5ccfa38649e1ee670135b4188152",
+					"env": "dev"
 				}
 			}
 		},
@@ -89,7 +89,7 @@
 				"TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
 				"Parameters": {
 					"identityPoolName": "babytracker0e020013_identitypool_0e020013",
-					"allowUnauthenticatedIdentities": false,
+					"allowUnauthenticatedIdentities": true,
 					"resourceNameTruncated": "babytr0e020013",
 					"userPoolName": "babytracker0e020013_userpool_0e020013",
 					"autoVerifiedAttributes": "email",

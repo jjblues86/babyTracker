@@ -287,9 +287,12 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
             this.startActivity(goToLocation);
             return (true);
 
-        } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent(this, FeedingActivity.class);
-            this.startActivity(goToAllTask);
+//        } else if (itemId == R.id.widget_to_settings) {
+//            Intent goToAllTask = new Intent(this, FeedingActivity.class);
+//            this.startActivity(goToAllTask);
+        } else if (itemId == R.id.widget_to_notification) {
+            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
+            this.startActivity(goToNotification);
             return (true);
 
 
