@@ -148,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
         @Override
         public void onFailure(@Nonnull ApolloException e) {
             Log.e(TAG, e.toString());
-//            taskDatabase.taskDao().getAll();
         }
     };
 
@@ -177,14 +176,9 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
                 .build();
         getBabyItems();
 
-
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
-//        String helloUser1 = sharedPreferences.getString("user_name", "default");
         TextView helloUser = findViewById(R.id.helloUser);
-//        nameUser.setText("Hi, " + helloUser);
-//        nameUser.setText(helloUser + "'s tasks");
-
         helloUser.setText(AWSMobileClient.getInstance().getUsername() + "'s babys");
 
 
@@ -242,21 +236,18 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop");
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onCreate");
-
     }
 
     // Allow nav_and_actions to be utilized
@@ -286,16 +277,10 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
             Intent goToLocation = new Intent(this, ImmunizationMapsActivity2.class);
             this.startActivity(goToLocation);
             return (true);
-
-//        } else if (itemId == R.id.widget_to_settings) {
-//            Intent goToAllTask = new Intent(this, FeedingActivity.class);
-//            this.startActivity(goToAllTask);
         } else if (itemId == R.id.widget_to_notification) {
             Intent goToNotification = new Intent (this, AddNotificationActivity.class);
             this.startActivity(goToNotification);
             return (true);
-
-
         } else if (itemId == R.id.widget_to_notification) {
             Intent goToNotification = new Intent (this, AddNotificationActivity.class);
             this.startActivity(goToNotification);
@@ -317,22 +302,8 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
         Intent i = new Intent(this, BabyDetails.class);
 
         Log.i(TAG, "Clicked");
-
-//
-//        Log.i("baby name",  baby.name);
-//        Log.i("baby name",  baby.dateOfBirth);
-
-
         i.putExtra("baby_name",baby.name);
         i.putExtra("baby_dob",baby.dateOfBirth);
-//        i.putExtra("baby_id",baby.id);
-
-
-//        i.putExtra("task_desc",babyList.get(position).body);
-//        i.putExtra("task_state",babyList.get(position).state);
-//        i.putExtra("task_url",babyList.get(position).picTask);
-
-
         this.startActivity(i);
         Log.i("voytov", "works?");
 
