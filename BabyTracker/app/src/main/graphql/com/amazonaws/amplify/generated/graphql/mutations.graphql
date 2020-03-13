@@ -7,7 +7,10 @@ mutation CreateBaby(
     id
     name
     dob
+<<<<<<< HEAD
+=======
     imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }
 mutation UpdateBaby(
@@ -18,7 +21,10 @@ mutation UpdateBaby(
     id
     name
     dob
+<<<<<<< HEAD
+=======
     imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }
 mutation DeleteBaby(
@@ -29,6 +35,9 @@ mutation DeleteBaby(
     id
     name
     dob
+<<<<<<< HEAD
+=======
     imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }

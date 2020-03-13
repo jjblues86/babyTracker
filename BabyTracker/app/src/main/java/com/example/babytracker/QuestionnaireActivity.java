@@ -104,6 +104,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 Intent chooseFile = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                 startActivityForResult(chooseFile, 42);
@@ -119,6 +120,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 String dobText = dobInput.getText().toString();
 
                 runMutation(inputText, dobText);
+
 
                 EditText name = findViewById(R.id.newBabyNameActual);
                 String nameText = name.getText().toString();
@@ -145,11 +147,24 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
     ///  end of create
 
+    //connecting to dynamo db
+    public void runMutation(String name, String dob){
+        CreateBabyInput createBabyInput = CreateBabyInput.builder()
+                .name(name)
+                .dob(dob)
+                .build();
+        mAWSAppSyncClient.mutate(CreateBabyMutation.builder().input(createBabyInput).build())
+                .enqueue(addMutationCallback);
+    }
 
     private GraphQLCall.Callback<CreateBabyMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateBabyMutation.Data>() {
         @Override
         public void onResponse(@Nonnull Response<CreateBabyMutation.Data> response) {
+
+            Log.i("Results", "Added Todo");
+
             Log.i("voytov", "Added baby");
+
         }
 
         @Override
