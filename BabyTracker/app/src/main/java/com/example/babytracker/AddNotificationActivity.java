@@ -54,7 +54,6 @@ public class AddNotificationActivity extends AppCompatActivity {
         //creating notifications
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_plus_one_black_24dp)
-//                .setContentTitle(spinner)
                 .setContentTitle(time)
                 .setContentText(spinner)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -66,13 +65,10 @@ public class AddNotificationActivity extends AppCompatActivity {
     }
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            CharSequence name = getString(R.string.channel_name);
-//            String description = getString(R.string.channel_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "set notification",
                     NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription("This is to set notification");
-//            channel.setDescription(description);
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
