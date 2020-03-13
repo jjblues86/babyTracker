@@ -1,7 +1,9 @@
 package com.example.babytracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -38,7 +40,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyBabyRecyclerViewAdapter.OnListFragmentInteractionListener {
 
     String TAG = "MainActivity";
     private AWSAppSyncClient mAWSAppSyncClient;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.babies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, this));
 
         //Button to take you the questionnaire activity
         final Button questionnaireButton = findViewById(R.id.addBaby);
@@ -186,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
         helloUser.setText(AWSMobileClient.getInstance().getUsername() + "'s babys");
 
 
-
         this.babyList = new ArrayList<>();
 
         for (Baby baby : babyList) {
@@ -195,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.babies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, this));
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
@@ -300,5 +301,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClickOnBabyCallback(Baby baby) {
+
+//        Context context = v.getContext();
+        Intent i = new Intent(this, BabyDetails.class);
+
+        Log.i(TAG, "Clicked");
+
+//
+//        Log.i("baby name",  baby.name);
+//        Log.i("baby name",  baby.dateOfBirth);
+
+
+        i.putExtra("baby_name",baby.name);
+        i.putExtra("baby_dob",baby.dateOfBirth);
+//        i.putExtra("baby_id",baby.id);
+
+
+//        i.putExtra("task_desc",babyList.get(position).body);
+//        i.putExtra("task_state",babyList.get(position).state);
+//        i.putExtra("task_url",babyList.get(position).picTask);
+
+
+        this.startActivity(i);
+        Log.i("voytov", "works?");
+
+    }
 }
 

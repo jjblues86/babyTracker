@@ -11,12 +11,12 @@ public class Baby {
 
     String name;
     String dateOfBirth;
-//    Boolean immunization;
+    String imageUrl;
 
     public Baby(String name, String dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-//        this.immunization = immunization;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {

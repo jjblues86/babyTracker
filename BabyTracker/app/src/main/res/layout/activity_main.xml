@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/babies"
         android:name="com.example.babytracker.BabyFragment"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
         app:layout_constraintBottom_toTopOf="@+id/addBaby"
         app:layout_constraintEnd_toEndOf="parent"
