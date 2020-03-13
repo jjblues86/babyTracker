@@ -1,5 +1,6 @@
 package com.example.babytracker;
 
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +11,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
 import com.amazonaws.mobile.client.SignInUIOptions;
@@ -21,10 +20,10 @@ import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 
 @SuppressLint("Registered")
 public class BabyDetails extends AppCompatActivity {
@@ -36,6 +35,8 @@ public class BabyDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baby_details);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(false);
 
@@ -51,7 +52,7 @@ public class BabyDetails extends AppCompatActivity {
 
         Intent showTaskID = getIntent();
 
-        String showTaskName = showTaskID.getStringExtra("taskName");
+        String showTaskName = showTaskID.getStringExtra("babyName");
         TextView textView1 = findViewById(R.id.baby_name);
         textView1.setText(showTaskName);
 
@@ -59,6 +60,16 @@ public class BabyDetails extends AppCompatActivity {
 
 //        dataSet.get((int) dbTasks.taskDao().getSpecificViaTaskName(showTaskName).getId());
 
+        taskImage = findViewById(R.id.baby_Image);
+//        Picasso.get().load("https://bucketfortasks123331-taskenv.s3-us-west-2.amazonaws.com/public/public/c803c223-3ea7-46ca-ba0e-1dfc9f14de7d").into(taskImage);
+
+
+        showTaskID = getIntent();
+        showTaskName = showTaskID.getStringExtra("babyName");
+        textView1 = findViewById(R.id.baby_name);
+        textView1.setText(showTaskName);
+//        getTasksFromAmplify();
+//        dataSet.get((int) dbTasks.taskDao().getSpecificViaTaskName(showTaskName).getId());
 //        TaskData taskDataViaTaskName = dbTasks.taskDao().getSpecificViaTaskName(showTaskName);
 //        Log.i("daylongTheGreat", String.valueOf(taskDataViaTaskName));
 //
@@ -74,7 +85,6 @@ public class BabyDetails extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
                     public void onResult(UserStateDetails userStateDetails) {
@@ -160,7 +170,6 @@ public class BabyDetails extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int itemId = item.getItemId();
-
         if (itemId == R.id.widget_to_main) {
             Intent goToMain = new Intent (this, MainActivity.class);
             this.startActivity(goToMain);

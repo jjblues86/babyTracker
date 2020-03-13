@@ -1,23 +1,27 @@
 package com.example.babytracker;
 
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.amplify.generated.graphql.ListBabysQuery;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
@@ -36,8 +40,6 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-import type.CreateBabyInput;
-
 public class MainActivity extends AppCompatActivity {
 
     String TAG = "MainActivity";
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     List<Baby> babyList;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.babyList = new ArrayList<>();
 
-        for(Baby baby : babyList){
+        for (Baby baby : babyList) {
             Log.i(TAG, baby.name + baby.dateOfBirth);
         }
 
@@ -69,15 +72,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
 
         //Button to take you the questionnaire activity
-        final Button questionnaireButton = findViewById(R.id.addBaby);
-        questionnaireButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent goToQuestionnaire = new Intent(MainActivity.this, QuestionnaireActivity.class);
-                MainActivity.this.startActivity(goToQuestionnaire);
-            }
-        });
+//        final Button questionnaireButton = findViewById(R.id.addBaby);
+//        questionnaireButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent goToQuestionnaire = new Intent(MainActivity.this, QuestionnaireActivity.class);
+//                MainActivity.this.startActivity(goToQuestionnaire);
+//            }
+//        });
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
 
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(UserStateDetails userStateDetails) {
                         Log.i("INIT", "onResult: " + userStateDetails.getUserState());
 
-                        if(userStateDetails.getUserState().equals(UserState.SIGNED_OUT)) {
+                        if (userStateDetails.getUserState().equals(UserState.SIGNED_OUT)) {
                             AWSMobileClient.getInstance().showSignIn(MainActivity.this, new Callback<UserStateDetails>() {
                                 @Override
                                 public void onResult(UserStateDetails result) {
@@ -108,34 +111,37 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        TextView helloUser = findViewById(R.id.helloUser);
+        helloUser.setText(AWSMobileClient.getInstance().getUsername() + "'s babies");
+        Log.i("daylongTheGreat", AWSMobileClient.getInstance().getUsername() + " ");
+
     }
 
     //this method enables me to query data stored in dynamodb to render on my front page
-    public void getBabyItems()
-    {
+    public void getBabyItems() {
         Log.i(TAG, "Did we make it into getTaskItems");
 
         mAWSAppSyncClient.query(ListBabysQuery.builder().build())
                 .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
                 .enqueue(tasksCallback);
     }
+
     private GraphQLCall.Callback<ListBabysQuery.Data> tasksCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
         @Override
-        public void onResponse(@Nonnull Response<ListBabysQuery.Data> response)
-        {
+        public void onResponse(@Nonnull Response<ListBabysQuery.Data> response) {
             Log.i(TAG, response.data().listBabys().items().toString());
 
-            if(babyList.size() == 0 || response.data().listBabys().items().size() != babyList.size()){
+            if (babyList.size() == 0 || response.data().listBabys().items().size() != babyList.size()) {
 
                 babyList.clear();
 
-                for(ListBabysQuery.Item item : response.data().listBabys().items()){
+                for (ListBabysQuery.Item item : response.data().listBabys().items()) {
                     Baby addBaby = new Baby(item.name(), item.dob());
                     babyList.add(addBaby);
                 }
-                Handler handler = new Handler(Looper.getMainLooper()){
+                Handler handler = new Handler(Looper.getMainLooper()) {
                     @Override
-                    public void handleMessage(Message inputMessage){
+                    public void handleMessage(Message inputMessage) {
                         RecyclerView recyclerView = findViewById(R.id.babies);
                         recyclerView.getAdapter().notifyDataSetChanged();
                     }
@@ -143,9 +149,9 @@ public class MainActivity extends AppCompatActivity {
                 handler.obtainMessage().sendToTarget();
             }
         }
+
         @Override
-        public void onFailure(@Nonnull ApolloException e)
-        {
+        public void onFailure(@Nonnull ApolloException e) {
             Log.e(TAG, e.toString());
 //            taskDatabase.taskDao().getAll();
         }
@@ -165,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onResume() {
         super.onResume();
@@ -176,9 +183,20 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         getBabyItems();
 
+
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+//        String helloUser1 = sharedPreferences.getString("user_name", "default");
+        TextView helloUser = findViewById(R.id.helloUser);
+//        nameUser.setText("Hi, " + helloUser);
+//        nameUser.setText(helloUser + "'s tasks");
+
+        helloUser.setText(AWSMobileClient.getInstance().getUsername() + "'s babies");
+        Log.i("daylongTheGreat", AWSMobileClient.getInstance().getUsername() + " ");
+
         this.babyList = new ArrayList<>();
 
-        for(Baby baby : babyList){
+        for (Baby baby : babyList) {
             Log.i(TAG, baby.name + baby.dateOfBirth);
         }
 
@@ -198,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onResult(UserStateDetails result) {
                                                     Log.d("daylongTheGreat", "onResult: " + result.getUserState());
-                                                    switch (result.getUserState()){
+                                                    switch (result.getUserState()) {
                                                         case SIGNED_IN:
                                                             Log.i("INIT", "LOGGED IN");
                                                             break;
@@ -210,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
                                                             break;
                                                     }
                                                 }
+
                                                 @Override
                                                 public void onError(Exception e) {
                                                 }
@@ -260,17 +279,22 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
         if (itemId == R.id.widget_to_main) {
-            Intent goToMain = new Intent (this, MainActivity.class);
+            Intent goToMain = new Intent(this, MainActivity.class);
             this.startActivity(goToMain);
             return (true);
 
         } else if (itemId == R.id.widget_to_profile) {
-            Intent goToAddTask = new Intent (this, QuestionnaireActivity.class);
+            Intent goToAddTask = new Intent(this, QuestionnaireActivity.class);
             this.startActivity(goToAddTask);
             return (true);
 
+        } else if (itemId == R.id.widget_to_location) {
+            Intent goToLocation = new Intent(this, ImmunizationMapsActivity2.class);
+            this.startActivity(goToLocation);
+            return (true);
+
         } else if (itemId == R.id.widget_to_settings) {
-            Intent goToAllTask = new Intent (this, FeedingActivity.class);
+            Intent goToAllTask = new Intent(this, FeedingActivity.class);
             this.startActivity(goToAllTask);
             return (true);
 
@@ -279,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
             AWSMobileClient.getInstance().signOut();
             finish();
         }
-        return(super.onOptionsItemSelected(item));
+        return (super.onOptionsItemSelected(item));
     }
 }
 

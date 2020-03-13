@@ -9,7 +9,6 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
-    android:background="#5F5F5F"
     android:hapticFeedbackEnabled="true"
     android:scrollbars="vertical"
     android:textAlignment="center"
