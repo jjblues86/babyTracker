@@ -271,6 +271,11 @@ public class MainActivity extends AppCompatActivity {
             this.startActivity(goToNotification);
             return (true);
 
+        } else if (itemId == R.id.widget_to_milestones) {
+            Intent goToMilestones = new Intent (this, MilestoneActivity.class);
+            this.startActivity(goToMilestones);
+            return (true);
+
         } else if (itemId == R.id.logout_button) {
             Toast.makeText(MainActivity.this, "Logging Out User", Toast.LENGTH_LONG).show();
             AWSMobileClient.getInstance().signOut();

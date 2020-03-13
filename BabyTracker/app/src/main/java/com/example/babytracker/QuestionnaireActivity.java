@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -271,10 +272,10 @@ public class QuestionnaireActivity extends AppCompatActivity {
 
     public String getPath(Uri uri) {
 
-        } else if (itemId == R.id.widget_to_notification) {
+//        } else if (itemId == R.id.widget_to_notification) {
 //            Intent goToAllTask = new Intent (this, FeedingActivity.class);
 //            this.startActivity(goToAllTask);
-            return (true);
+//            return (true);
         String path = null;
         String[] projection = {MediaStore.Files.FileColumns.DATA};
         Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
