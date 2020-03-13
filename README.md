@@ -33,6 +33,8 @@
         * 1 approver
 * Create branch for every feature that we will implement.
 
+# Project Proposals
+
 **Idea 1: Baby Tracker**
 
 *Summary:* 
@@ -83,7 +85,11 @@ A queue with a student sign-up.  App will alert the first student waiting for as
    * As a user I want to have the ability to save data into my profile regarding my baby's developmental milestone
 
 ## Wireframe
-![wireframe](assets/baby_tracker_v1.pdf)
+<object data="https://github.com/jjblues86/babyTracker/blob/jj/assets/baby_tracker_v1.pdf" type="application/pdf" width="800px" height="auto">
+    <embed src="https://github.com/jjblues86/babyTracker/blob/jj/assets/baby_tracker_v1.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/jjblues86/babyTracker/blob/jj/assets/baby_tracker_v1.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
 
 # Database Entity-Relationship-Diagram
 ![ERD](assets/babyTrackerERD.png)

@@ -4,6 +4,10 @@ subscription OnCreateBaby {
     id
     name
     dob
+<<<<<<< HEAD
+=======
+    imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }
 subscription OnUpdateBaby {
@@ -11,6 +15,10 @@ subscription OnUpdateBaby {
     id
     name
     dob
+<<<<<<< HEAD
+=======
+    imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }
 subscription OnDeleteBaby {
@@ -18,5 +26,9 @@ subscription OnDeleteBaby {
     id
     name
     dob
+<<<<<<< HEAD
+=======
+    imageUrl
+>>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }

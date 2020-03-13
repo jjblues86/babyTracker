@@ -5,9 +5,10 @@
     android:id="@+id/list"
     android:name="com.example.babytracker.BabyFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:textAlignment="center"
     app:layoutManager="LinearLayoutManager"
     tools:context=".BabyFragment"
     tools:listitem="@layout/fragment_baby" />

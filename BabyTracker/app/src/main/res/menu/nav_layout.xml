@@ -15,6 +15,9 @@
         android:title="Notification"
         app:showAsAction="collapseActionView" />
     <item
+        android:id="@+id/widget_to_milestones"
+        android:title="Milestones" />
+    <item
         android:id="@+id/logout_button"
         android:title="Logout"
         app:showAsAction="collapseActionView" />

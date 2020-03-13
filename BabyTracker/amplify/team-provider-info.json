@@ -41,5 +41,23 @@
                 "babytracker0e020013": {}
             }
         }
+    },
+    "baby": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-babytracker-baby-110045-authRole",
+            "UnauthRoleArn": "arn:aws:iam::114428702348:role/amplify-babytracker-baby-110045-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::114428702348:role/amplify-babytracker-baby-110045-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-babytracker-baby-110045-deployment",
+            "UnauthRoleName": "amplify-babytracker-baby-110045-unauthRole",
+            "StackName": "amplify-babytracker-baby-110045",
+            "StackId": "arn:aws:cloudformation:us-east-1:114428702348:stack/amplify-babytracker-baby-110045/3da721b0-63c2-11ea-bd68-125f4521752f",
+            "AmplifyAppId": "d7a49pb6zaat7"
+        },
+        "categories": {
+            "auth": {
+                "babytracker0e020013": {}
+            }
+        }
     }
 }

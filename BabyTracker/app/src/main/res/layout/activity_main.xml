@@ -10,6 +10,7 @@
         android:id="@+id/addBaby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
         android:text="Add Baby"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,15 +19,11 @@
     <fragment
         android:id="@+id/babies"
         android:name="com.example.babytracker.BabyFragment"
-        android:layout_width="378dp"
-        android:layout_height="321dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginEnd="186dp"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toTopOf="@+id/addBaby"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

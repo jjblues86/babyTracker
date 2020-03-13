@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MilestoneActivity">
+
+    <TextView
+        android:id="@+id/milestonePageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Milestones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/milestoneInformation"
+        android:layout_width="364dp"
+        android:layout_height="626dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="2 Months  Social and Emotional - Begin to smile at people - Self calm briefly - Look at parents  Language/Communication - Coos, makes gurgling sounds - Turn head toward sounds  Cognitive (learning, thinking, problem-solving) - Pay attention to faces - Begin to act bored (cry, fuss) if activity doesn't change  Movement/Physical Development - Can hold head up and begin to push up when lying on stomach - Make smoother movements with arms and legs  4 Months  Social and Emotional - Smile spontaneously, especially at people - Likes to play with people and might cry when playing stops - Copies some movements and facial expressions, like smiling or frowning  Language/Communication - Begins to babble - Babble with expression and copy sounds  Cognitive (learning, thinking, problem-solving) - Lets you know if they are happy or sad - Respond to affection - Reaches for toy with one hand - Uses hands and eyes together, such as seeing a toy and reaching for it - Follows moving things with eyes from side to side - Watches faces closely - Recognizes familiar people and things at a distance  Movement/Physical Development - Holds head steady, unsupported - Pushes down on legs when feet are on a hard surface - May be albe to roll over from stomach to back - Can hold a toy and shake it and swing at dangling toys - Bring hands to mouth - When lying on stomach, pushes up on elbows  6 Months  Social and Emotional - Knows familiar faces and begins to know if someone is a stranger - Likes to play with others, especially parents - Responds to other people's emotions and often seems happy - Likes to look at self in mirror  Language/Communication - Responds to sounds by making sounds - String vowels together when babbling and likes taking turns with parent while making sounds - Respond to own name - Makes sounds to show joy and displeasure - Begins to say consonant sounds  Cognitive (learning, thinking, problem-solving) - Looks around at things nearby - Brings things to mouth - Shows curiosity about things and tries to get things that are out of reach - Begins to pass things from one hand to the other  Movement/Physical Development - Rolls over in both directions - Begins to sit without support - When standing, supports weight on legs and might bounce - Rocks back and forth, sometime crawling backward before moving forward "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/milestonePageTitle"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
