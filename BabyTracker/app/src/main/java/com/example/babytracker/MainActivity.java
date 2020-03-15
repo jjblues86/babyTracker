@@ -2,16 +2,20 @@ package com.example.babytracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +38,8 @@ import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -42,7 +48,7 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyBabyRecyclerViewAdapter.OnListFragmentInteractionListener {
 
     String TAG = "MainActivity";
     private AWSAppSyncClient mAWSAppSyncClient;
@@ -55,26 +61,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize PinpointManager
-        getPinpointManager(getApplicationContext());
-
         //This is from the amplify doc to enable us to integrate into our app
         mAWSAppSyncClient = AWSAppSyncClient.builder()
                 .context(getApplicationContext())
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
         getBabyItems();
+        // Initialize PinpointManager
+        getPinpointManager(getApplicationContext());
 
         this.babyList = new ArrayList<>();
 
-        for(Baby baby : babyList){
+        for (Baby baby : babyList) {
             Log.i(TAG, baby.name + baby.dateOfBirth);
         }
 
 
         RecyclerView recyclerView = findViewById(R.id.babies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, this));
 
         //Button to take you the questionnaire activity
         final Button questionnaireButton = findViewById(R.id.addBaby);
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResult(UserStateDetails userStateDetails) {
                         Log.i("INIT", "onResult: " + userStateDetails.getUserState());
 
-                        if(userStateDetails.getUserState().equals(UserState.SIGNED_OUT)) {
+                        if (userStateDetails.getUserState().equals(UserState.SIGNED_OUT)) {
                             AWSMobileClient.getInstance().showSignIn(MainActivity.this, new Callback<UserStateDetails>() {
                                 @Override
                                 public void onResult(UserStateDetails result) {
@@ -119,31 +124,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //this method enables me to query data stored in dynamodb to render on my front page
-    public void getBabyItems()
-    {
+    public void getBabyItems() {
         Log.i(TAG, "Did we make it into getTaskItems");
 
         mAWSAppSyncClient.query(ListBabysQuery.builder().build())
                 .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
                 .enqueue(babyCallback);
     }
+
     private GraphQLCall.Callback<ListBabysQuery.Data> babyCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
         @Override
-        public void onResponse(@Nonnull Response<ListBabysQuery.Data> response)
-        {
+        public void onResponse(@Nonnull Response<ListBabysQuery.Data> response) {
             Log.i(TAG, response.data().listBabys().items().toString());
 
-            if(babyList.size() == 0 || response.data().listBabys().items().size() != babyList.size()){
+            if (babyList.size() == 0 || response.data().listBabys().items().size() != babyList.size()) {
 
                 babyList.clear();
 
-                for(ListBabysQuery.Item item : response.data().listBabys().items()){
+                for (ListBabysQuery.Item item : response.data().listBabys().items()) {
                     Baby addBaby = new Baby(item.name(), item.dob());
                     babyList.add(addBaby);
                 }
-                Handler handler = new Handler(Looper.getMainLooper()){
+                Handler handler = new Handler(Looper.getMainLooper()) {
                     @Override
-                    public void handleMessage(Message inputMessage){
+                    public void handleMessage(Message inputMessage) {
                         RecyclerView recyclerView = findViewById(R.id.babies);
                         recyclerView.getAdapter().notifyDataSetChanged();
                     }
@@ -151,11 +155,10 @@ public class MainActivity extends AppCompatActivity {
                 handler.obtainMessage().sendToTarget();
             }
         }
+
         @Override
-        public void onFailure(@Nonnull ApolloException e)
-        {
+        public void onFailure(@Nonnull ApolloException e) {
             Log.e(TAG, e.toString());
-//            taskDatabase.taskDao().getAll();
         }
     };
 
@@ -184,15 +187,21 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         getBabyItems();
 
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        TextView helloUser = findViewById(R.id.helloUser);
+        helloUser.setText(AWSMobileClient.getInstance().getUsername() + "'s babys");
+
+
         this.babyList = new ArrayList<>();
 
-        for(Baby baby : babyList){
+        for (Baby baby : babyList) {
             Log.i(TAG, baby.name + baby.dateOfBirth);
         }
 
         RecyclerView recyclerView = findViewById(R.id.babies);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, null));
+        recyclerView.setAdapter(new MyBabyRecyclerViewAdapter(this.babyList, this));
 
         AWSMobileClient.getInstance().initialize(getApplicationContext(), new Callback<UserStateDetails>() {
                     @Override
@@ -206,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onResult(UserStateDetails result) {
                                                     Log.d("daylongTheGreat", "onResult: " + result.getUserState());
-                                                    switch (result.getUserState()){
+                                                    switch (result.getUserState()) {
                                                         case SIGNED_IN:
                                                             Log.i("INIT", "LOGGED IN");
                                                             break;
@@ -218,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                                                             break;
                                                     }
                                                 }
+
                                                 @Override
                                                 public void onError(Exception e) {
                                                 }
@@ -237,21 +247,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "onPause");
-
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         Log.i(TAG, "onStop");
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onCreate");
-
     }
 
     // Allow nav_and_actions to be utilized
@@ -268,15 +275,23 @@ public class MainActivity extends AppCompatActivity {
         int itemId = item.getItemId();
 
         if (itemId == R.id.widget_to_main) {
-            Intent goToMain = new Intent (this, MainActivity.class);
+            Intent goToMain = new Intent(this, MainActivity.class);
             this.startActivity(goToMain);
             return (true);
 
         } else if (itemId == R.id.widget_to_profile) {
-            Intent goToAddTask = new Intent (this, QuestionnaireActivity.class);
+            Intent goToAddTask = new Intent(this, QuestionnaireActivity.class);
             this.startActivity(goToAddTask);
             return (true);
 
+        } else if (itemId == R.id.widget_to_location) {
+            Intent goToLocation = new Intent(this, ImmunizationMapsActivity2.class);
+            this.startActivity(goToLocation);
+            return (true);
+        } else if (itemId == R.id.widget_to_notification) {
+            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
+            this.startActivity(goToNotification);
+            return (true);
         } else if (itemId == R.id.widget_to_notification) {
             Intent goToNotification = new Intent (this, AddNotificationActivity.class);
             this.startActivity(goToNotification);
@@ -292,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
             AWSMobileClient.getInstance().signOut();
             finish();
         }
-        return(super.onOptionsItemSelected(item));
+        return (super.onOptionsItemSelected(item));
     }
 
     public static PinpointManager getPinpointManager(final Context applicationContext) {
@@ -319,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
 
             FirebaseInstanceId.getInstance().getInstanceId()
                     .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                        public String TAG = "MAIN.PINPOINT";
+                        public String TAG;
 
                         @Override
                         public void onComplete(@NonNull com.google.android.gms.tasks.Task<InstanceIdResult> task) {
@@ -346,6 +361,19 @@ public class MainActivity extends AppCompatActivity {
                     });
         }
         return pinpointManager;
+    }
+    @Override
+    public void onClickOnBabyCallback(Baby baby) {
+
+//        Context context = v.getContext();
+        Intent i = new Intent(this, BabyDetails.class);
+
+        Log.i(TAG, "Clicked");
+        i.putExtra("baby_name",baby.name);
+        i.putExtra("baby_dob",baby.dateOfBirth);
+        this.startActivity(i);
+        Log.i("voytov", "works?");
+
     }
 }
 

@@ -100,12 +100,35 @@
 					"Version": 1
 				}
 			},
-			"lastPushTimeStamp": "2020-03-11T20:50:54.446Z"
 			"lastPushTimeStamp": "2020-03-11T18:48:57.265Z",
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
 				"logicalId": "storages3e296ed89"
 			}
+		}
+	},
+	"notifications": {
+		"BabyTrackerkllRN": {
+			"service": "Pinpoint",
+			"output": {
+				"Arn": "arn:aws:mobiletargeting:us-east-1:114428702348:apps/8631c050645e4e95b93227eab9947403",
+				"Id": "8631c050645e4e95b93227eab9947403",
+				"Name": "BabyTrackerkllRN-baby",
+				"tags": {},
+				"Region": "us-east-1",
+				"FCM": {
+					"ApplicationId": "8631c050645e4e95b93227eab9947403",
+					"CreationDate": "2020-03-13T18:00:59.341Z",
+					"Enabled": true,
+					"HasCredential": true,
+					"Id": "gcm",
+					"IsArchived": false,
+					"LastModifiedDate": "2020-03-13T18:00:59.341Z",
+					"Platform": "GCM",
+					"Version": 1
+				}
+			},
+			"lastPushTimeStamp": "2020-03-13T18:00:54.418Z"
 		}
 	}
 }

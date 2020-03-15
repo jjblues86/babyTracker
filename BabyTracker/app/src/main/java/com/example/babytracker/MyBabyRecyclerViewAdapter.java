@@ -54,8 +54,12 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
         //this gives me access to the view
         final MyBabyViewHolder viewHolder = new MyBabyViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
+
+                Log.i("voytov", viewHolder.baby.name);
                 mListener.onClickOnBabyCallback(viewHolder.baby);
             }
         });
@@ -64,8 +68,12 @@ public class MyBabyRecyclerViewAdapter extends RecyclerView.Adapter<MyBabyRecycl
     @Override
     public void onBindViewHolder(@NonNull MyBabyViewHolder holder, int position) {
         holder.babyNameView.setText(babyList.get(position).name);
+        holder.babyDateOfBirthView.setText(babyList.get(position).dateOfBirth);
         holder.babyDateOfBirthView.setText("" + babyList.get(position).dateOfBirth);
         holder.baby = babyList.get(position);
+        Log.i("voytov", position +"");
+
+        Log.i("voytov", holder.baby.toString());
     }
     @Override
     public int getItemCount() {

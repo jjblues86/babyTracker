@@ -4,10 +4,7 @@ query GetBaby($id: ID!) {
     id
     name
     dob
-<<<<<<< HEAD
-=======
     imageUrl
->>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
   }
 }
 query ListBabys(
@@ -20,10 +17,7 @@ query ListBabys(
       id
       name
       dob
-<<<<<<< HEAD
-=======
       imageUrl
->>>>>>> b31c04b28de37a0956df35d59e952155e37ebcd6
     }
     nextToken
   }

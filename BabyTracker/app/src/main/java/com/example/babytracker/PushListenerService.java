@@ -1,5 +1,6 @@
 package com.example.babytracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +9,10 @@ import com.amazonaws.mobileconnectors.pinpoint.targeting.notification.Notificati
 import com.amazonaws.mobileconnectors.pinpoint.targeting.notification.NotificationDetails;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
 import java.util.HashMap;
+
+import static com.example.babytracker.MainActivity.getPinpointManager;
+
 
 public class PushListenerService extends FirebaseMessagingService {
     public static final String TAG = PushListenerService.class.getSimpleName();
@@ -25,15 +28,16 @@ public class PushListenerService extends FirebaseMessagingService {
         super.onNewToken(token);
 
         Log.d(TAG, "Registering push notifications token: " + token);
-        MainActivity.getPinpointManager(getApplicationContext()).getNotificationClient().registerDeviceToken(token);
+        getPinpointManager(getApplicationContext()).getNotificationClient().registerDeviceToken(token);
     }
+
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         Log.d(TAG, "Message: " + remoteMessage.getData());
 
-        final NotificationClient notificationClient = MainActivity.getPinpointManager(getApplicationContext()).getNotificationClient();
+        final NotificationClient notificationClient = getPinpointManager(getApplicationContext()).getNotificationClient();
 
         final NotificationDetails notificationDetails = NotificationDetails.builder()
                 .from(remoteMessage.getFrom())

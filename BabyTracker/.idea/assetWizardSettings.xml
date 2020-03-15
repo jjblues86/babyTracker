@@ -18,7 +18,11 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+<<<<<<< HEAD
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/places/ic_child_care_black_24dp.xml" />
+=======
                                       <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_plus_one_black_24dp.xml" />
+>>>>>>> jj
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +32,12 @@
                         </option>
                         <option name="values">
                           <map>
+<<<<<<< HEAD
+                            <entry key="color" value="ff057e" />
+                            <entry key="outputName" value="ic_child_care_pink" />
+=======
                             <entry key="outputName" value="ic_plus_one_black_24dp" />
+>>>>>>> jj
                             <entry key="sourceFile" value="$USER_HOME$" />
                           </map>
                         </option>

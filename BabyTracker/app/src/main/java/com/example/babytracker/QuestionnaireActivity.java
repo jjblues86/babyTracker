@@ -7,9 +7,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -23,7 +20,6 @@ import android.widget.Toast;
 import com.amazonaws.amplify.generated.graphql.CreateBabyMutation;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
-import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferListener;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
 import com.amazonaws.mobileconnectors.s3.transferutility.TransferService;
@@ -35,18 +31,14 @@ import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nonnull;
 import type.CreateBabyInput;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.RecyclerView;
 import com.amazonaws.mobile.client.AWSMobileClient;
 import com.amazonaws.mobile.client.Callback;
-import com.amazonaws.mobile.client.SignInUIOptions;
 import com.amazonaws.mobile.client.UserStateDetails;
 
 
@@ -147,16 +139,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
     ///  end of create
 
-    //connecting to dynamo db
-    public void runMutation(String name, String dob){
-        CreateBabyInput createBabyInput = CreateBabyInput.builder()
-                .name(name)
-                .dob(dob)
-                .build();
-        mAWSAppSyncClient.mutate(CreateBabyMutation.builder().input(createBabyInput).build())
-                .enqueue(addMutationCallback);
-    }
-
     private GraphQLCall.Callback<CreateBabyMutation.Data> mutationCallback = new GraphQLCall.Callback<CreateBabyMutation.Data>() {
         @Override
         public void onResponse(@Nonnull Response<CreateBabyMutation.Data> response) {
@@ -209,8 +191,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 transferUtility.upload(
                         "public/" + uuid,
                         new File(picturePath), CannedAccessControlList.PublicRead);
-
-
         // Attach a listener to the observer to get state update and progress notifications
         uploadObserver.setTransferListener(new TransferListener() {
 
@@ -219,11 +199,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 if (TransferState.COMPLETED == state) {
                     Log.i(TAG, "successfully uploaded");
                     imageUrl = "https://" + uploadObserver.getBucket() + uploadObserver.getKey();
-
-//
                     Log.i(TAG, "path to the s3 image please" + "https://" + uploadObserver.getBucket() + "/" + uploadObserver.getKey());
-//
-//
 //                    Log.i(TAG, "ACTUAL stuff" + uploadObserver.getBucket() + uploadObserver.getKey());
 
                 }
@@ -273,8 +249,6 @@ public class QuestionnaireActivity extends AppCompatActivity {
                     Log.i(TAG, "URI " + resultData.getData());
 
                     uploadWithTransferUtility(resultData.getData());
-
-
                 }
 
                 @Override
@@ -320,8 +294,48 @@ public class QuestionnaireActivity extends AppCompatActivity {
         if (typeActivity != null && typeActivity.contains("image/")) {
 
             Uri imageUrl = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-//            uploadWithTransferUtility(imageUrl);
-
         }
     }
+
+    // Allow nav_and_actions to be utilized
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.nav_layout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.widget_to_main) {
+            Intent goToMain = new Intent(this, MainActivity.class);
+            this.startActivity(goToMain);
+            return (true);
+
+        } else if (itemId == R.id.widget_to_profile) {
+            Intent goToAddTask = new Intent(this, QuestionnaireActivity.class);
+            this.startActivity(goToAddTask);
+            return (true);
+
+        } else if (itemId == R.id.widget_to_location) {
+            Intent goToLocation = new Intent(this, ImmunizationMapsActivity2.class);
+            this.startActivity(goToLocation);
+            return (true);
+        }
+        else if (itemId == R.id.widget_to_notification) {
+            Intent goToNotification = new Intent (this, AddNotificationActivity.class);
+            this.startActivity(goToNotification);
+            return (true);
+        }
+        else if (itemId == R.id.logout_button) {
+            Toast.makeText(QuestionnaireActivity.this, "Logging Out User", Toast.LENGTH_LONG).show();
+            AWSMobileClient.getInstance().signOut();
+            finish();
+        }
+        return (super.onOptionsItemSelected(item));
+    }
 }
+

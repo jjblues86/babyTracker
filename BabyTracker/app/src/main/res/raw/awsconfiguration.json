@@ -44,5 +44,16 @@
         "Default": {
             "Region": "us-west-2"
         }
+    },
+    "PinpointAnalytics": {
+        "Default": {
+            "AppId": "8631c050645e4e95b93227eab9947403",
+            "Region": "us-east-1"
+        }
+    },
+    "PinpointTargeting": {
+        "Default": {
+            "Region": "us-east-1"
+        }
     }
 }
