@@ -10,6 +10,11 @@
 			"StackName": "amplify-babytracker-dev-100554",
 			"StackId": "arn:aws:cloudformation:us-west-2:283610981787:stack/amplify-babytracker-dev-100554/54a4fee0-609e-11ea-a826-0a25a13ca77a",
 			"AmplifyAppId": "d3cxovmwlxxb19"
+		},
+		"categories": {
+			"auth": {
+				"babytracker0e020013": {}
+			}
 		}
 	},
 	"api": {
@@ -27,16 +32,103 @@
 						}
 					}
 				},
-				"GraphQLAPIIdOutput": "ap3j7wy7x5ctnjjphi6qselykq",
-				"GraphQLAPIEndpointOutput": "https://cfdseghbhvdgpcmrjavrbypqoe.appsync-api.us-west-2.amazonaws.com/graphql",
-				"GraphQLAPIKeyOutput": "da2-ueia7zuqrvbizi3gf6fprxlsqu"
+				"GraphQLAPIIdOutput": "fkq7zqtiezfjld6x2ehzzw2uhm",
+				"GraphQLAPIEndpointOutput": "https://fliqrdylsvc55iafeczvrjzjyy.appsync-api.us-east-1.amazonaws.com/graphql",
+				"GraphQLAPIKeyOutput": "da2-t4ynnjxpvzfyzoh5qwlniu5i2q"
 			},
-			"lastPushTimeStamp": "2020-03-09T02:16:56.233Z",
+			"lastPushTimeStamp": "2020-03-11T20:55:40.503Z",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/api/cloudformation-template.json",
 				"logicalId": "apibabytracker"
 			},
-			"lastPushDirHash": "NOhUrCAnyAC2CbNCzMudSpYNU6o="
+			"lastPushDirHash": "F5IcS4CdDndN4778maueFbfdIn4="
+		}
+	},
+	"auth": {
+		"babytracker0e020013": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false,
+
+			"output": {
+				"AppClientSecret": "m0kncemh4f2rtnlsa78drl5r06d8f1u7rqt128glh64ggf443nd",
+				"UserPoolId": "us-east-1_7r08ljJam",
+				"AppClientIDWeb": "4o8bgjbhaitnjj0ap7kpd1eip7",
+				"AppClientID": "22pmr6v1qsnutqglf9cntrt6ep",
+				"IdentityPoolId": "us-east-1:1751611b-7c33-46d0-9956-6aa38a57a3b2",
+				"IdentityPoolName": "babytracker0e020013_identitypool_0e020013__baby",
+				"UserPoolName": "babytracker0e020013_userpool_0e020013"
+			},
+			"lastPushTimeStamp": "2020-03-11T18:48:57.264Z",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
+				"logicalId": "authbabytracker0e020013"
+			}
+		}
+	},
+	"storage": {
+		"s3e296ed89": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"lastPushTimeStamp": "2020-03-11T20:55:40.503Z",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-dev-100554-deployment/amplify-cfn-templates/auth/babytracker0e020013-cloudformation-template.yml",
+				"logicalId": "authbabytracker0e020013"
+			},
+			"lastPushDirHash": "R8x2zyfadnd6JUFfNgzEl/cti0k="
+		}
+	},
+	"notifications": {
+		"BabyTracker5sbOa": {
+			"service": "Pinpoint",
+			"output": {
+				"Arn": "arn:aws:mobiletargeting:us-west-2:283610981787:apps/7d5fdd704ff645ba93fc5561130feb23",
+				"Id": "7d5fdd704ff645ba93fc5561130feb23",
+				"Name": "BabyTracker5sbOa-dev",
+				"tags": {},
+				"Region": "us-west-2",
+				"FCM": {
+					"ApplicationId": "7d5fdd704ff645ba93fc5561130feb23",
+					"CreationDate": "2020-03-11T20:51:40.441Z",
+					"Enabled": true,
+					"HasCredential": true,
+					"Id": "gcm",
+					"IsArchived": false,
+					"LastModifiedDate": "2020-03-11T20:51:40.441Z",
+					"Platform": "GCM",
+					"Version": 1
+				}
+			},
+			"lastPushTimeStamp": "2020-03-11T18:48:57.265Z",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storages3e296ed89"
+			}
+		}
+	},
+	"notifications": {
+		"BabyTrackerkllRN": {
+			"service": "Pinpoint",
+			"output": {
+				"Arn": "arn:aws:mobiletargeting:us-east-1:114428702348:apps/8631c050645e4e95b93227eab9947403",
+				"Id": "8631c050645e4e95b93227eab9947403",
+				"Name": "BabyTrackerkllRN-baby",
+				"tags": {},
+				"Region": "us-east-1",
+				"FCM": {
+					"ApplicationId": "8631c050645e4e95b93227eab9947403",
+					"CreationDate": "2020-03-13T18:00:59.341Z",
+					"Enabled": true,
+					"HasCredential": true,
+					"Id": "gcm",
+					"IsArchived": false,
+					"LastModifiedDate": "2020-03-13T18:00:59.341Z",
+					"Platform": "GCM",
+					"Version": 1
+				}
+			},
+			"lastPushTimeStamp": "2020-03-13T18:00:54.418Z"
 		}
 	}
 }

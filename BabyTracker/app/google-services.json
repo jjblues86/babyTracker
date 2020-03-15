@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "861040746584",
+    "firebase_url": "https://babytracker-29f32.firebaseio.com",
+    "project_id": "babytracker-29f32",
+    "storage_bucket": "babytracker-29f32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861040746584:android:cc837098e2ac0a2a1d2a2d",
+        "android_client_info": {
+          "package_name": "com.example.babytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861040746584-lbitf4akfcm7l28q5jbc4380gdug6qgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ4TDugPFj1QKfApxb_xPYZrloMWdInns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861040746584-lbitf4akfcm7l28q5jbc4380gdug6qgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

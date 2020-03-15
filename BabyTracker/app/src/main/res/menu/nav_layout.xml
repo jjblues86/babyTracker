@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/widget_to_main"
+        android:title="Main"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/widget_to_profile"
+        android:title="New Baby"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/widget_to_location"
+        android:title="Location"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/widget_to_notification"
+        android:title="Notification"
+        app:showAsAction="collapseActionView" />
+
+    <item
+        android:id="@+id/widget_to_notification"
+        android:title="Notifications"
+        app:showAsAction="collapseActionView" />
+
+
+    <item
+        android:id="@+id/widget_to_milestones"
+        android:title="Milestones" />
+    <item
+        android:id="@+id/logout_button"
+        android:title="Logout"
+        app:showAsAction="collapseActionView" />
+
+
+</menu>
+
+

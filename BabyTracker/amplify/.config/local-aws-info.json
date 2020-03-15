@@ -3,5 +3,15 @@
         "configLevel": "project",
         "useProfile": true,
         "profileName": "default"
+    },
+    "tracker": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "default"
+    },
+    "baby": {
+        "configLevel": "project",
+        "useProfile": true,
+        "profileName": "sergey"
     }
 }

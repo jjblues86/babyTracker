@@ -1,20 +1,51 @@
 {
-	"api": {
-		"babytracker": {
-			"service": "AppSync",
-			"providerPlugin": "awscloudformation",
-			"output": {
-				"authConfig": {
-					"additionalAuthenticationProviders": [],
-					"defaultAuthentication": {
-						"authenticationType": "API_KEY",
-						"apiKeyConfig": {
-							"description": "",
-							"apiKeyExpirationDays": "60"
-						}
-					}
-				}
-			}
-		}
-	}
+    "api": {
+        "babytracker": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "API_KEY",
+                        "apiKeyConfig": {
+                            "description": "",
+                            "apiKeyExpirationDays": "60"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auth": {
+        "babytracker0e020013": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "customAuth": false
+        }
+    },
+<<<<<<< HEAD
+    "storage": {
+        "s3e296ed89": {
+            "service": "S3",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "notifications": {
+        "BabyTrackerkllRN": {
+=======
+    "notifications": {
+        "BabyTracker5sbOa": {
+>>>>>>> jj
+            "service": "Pinpoint",
+            "channels": [
+                "FCM"
+            ]
+        }
+    }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> jj

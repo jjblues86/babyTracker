@@ -31,6 +31,7 @@ captures/
 **/.idea/tasks.xml
 **/.idea/gradle.xml
 **/.idea/dictionaries
+/.idea/caches
 **/.idea/libraries
 **/.idea/markdown-navigator/
 # External native build folder generated in Android Studio 2.2 and later
@@ -152,6 +153,16 @@ Temporary Items
 # IDE
 **/.vscode/
 **/.settings/
+nested-cloudformation-stack.yml
+amplify/\#current-cloud-backend
+amplify/.config/local-env-info.json
+amplify/backend/amplify-meta.json
+amplify/backend/awscloudformation
+/amplify/backend/storage/bbpic/parameters.json
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
 # End of https://www.gitignore.io/api/java,macos,android,androidstudio
 **markdown-navigator.xml
-BuyCheapStuff

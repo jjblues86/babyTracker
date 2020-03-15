@@ -1,0 +1,24 @@
+# this is an auto generated file. This will be overwritten
+query GetBaby($id: ID!) {
+  getBaby(id: $id) {
+    id
+    name
+    dob
+    immunization
+  }
+}
+query ListBabys(
+  $filter: ModelBabyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listBabys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      dob
+      immunization
+    }
+    nextToken
+  }
+}

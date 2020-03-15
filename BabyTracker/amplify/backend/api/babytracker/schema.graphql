@@ -1,6 +1,6 @@
 type Baby @model {
   id: ID!
   name: String!
-  dob: Date
-  immunization: Boolean
+  dob: String
+imageUrl: String
 }

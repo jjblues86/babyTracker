@@ -10,24 +10,24 @@ public class Baby {
     long id;
 
     String name;
-    int dateOfBirth;
-    Boolean immunization;
+    String dateOfBirth;
+    String imageUrl;
 
-    public Baby(String name, int dateOfBirth, Boolean immunization) {
+    public Baby(String name, String dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.immunization = immunization;
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public Boolean getImmunization() {
-        return immunization;
-    }
+//    public Boolean getImmunization() {
+//        return immunization;
+//    }
 }

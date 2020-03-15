@@ -1,0 +1,15 @@
+{
+    "navenv": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-btnavcreation-navenv-211220-authRole",
+            "UnauthRoleArn": "arn:aws:iam::247911380986:role/amplify-btnavcreation-navenv-211220-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::247911380986:role/amplify-btnavcreation-navenv-211220-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-btnavcreation-navenv-211220-deployment",
+            "UnauthRoleName": "amplify-btnavcreation-navenv-211220-unauthRole",
+            "StackName": "amplify-btnavcreation-navenv-211220",
+            "StackId": "arn:aws:cloudformation:us-west-2:247911380986:stack/amplify-btnavcreation-navenv-211220/62a849f0-6285-11ea-bbde-0a6b72e80b7e",
+            "AmplifyAppId": "di2jyitqog3qt"
+        }
+    }
+}

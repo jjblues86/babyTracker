@@ -1,0 +1,25 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateBaby {
+  onCreateBaby {
+    id
+    name
+    dob
+    immunization
+  }
+}
+subscription OnUpdateBaby {
+  onUpdateBaby {
+    id
+    name
+    dob
+    immunization
+  }
+}
+subscription OnDeleteBaby {
+  onDeleteBaby {
+    id
+    name
+    dob
+    immunization
+  }
+}
