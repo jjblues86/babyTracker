@@ -19,13 +19,6 @@
         android:id="@+id/widget_to_notification"
         android:title="Notification"
         app:showAsAction="collapseActionView" />
-
-    <item
-        android:id="@+id/widget_to_notification"
-        android:title="Notifications"
-        app:showAsAction="collapseActionView" />
-
-
     <item
         android:id="@+id/widget_to_milestones"
         android:title="Milestones" />
@@ -33,8 +26,6 @@
         android:id="@+id/logout_button"
         android:title="Logout"
         app:showAsAction="collapseActionView" />
-
-
 </menu>
 
 

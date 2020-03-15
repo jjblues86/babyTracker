@@ -24,7 +24,8 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_child_care_pink"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="ExtraText">
 <!--        <activity android:name=".AddNotificationActivity" />-->
         <activity android:name=".BabyDetails" />
         <!--
@@ -52,10 +53,10 @@
             android:name=".QuestionnaireActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".NutritionActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity" />
+<!--        <activity-->
+<!--            android:name=".NutritionActivity"-->
+<!--            android:launchMode="singleTop"-->
+<!--            android:parentActivityName=".MainActivity" />-->
         <activity
             android:name=".AddNotificationActivity"
             android:launchMode="singleTop"
