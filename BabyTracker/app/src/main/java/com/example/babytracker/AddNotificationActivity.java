@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+
 public class AddNotificationActivity extends AppCompatActivity {
     String TAG = "AddNotificationActivity";
     public static final String CHANNEL_ID = "Set_Notification";
@@ -23,6 +24,8 @@ public class AddNotificationActivity extends AppCompatActivity {
     private EditText notificationDate;
     private Spinner notificationSpinner;
     private AWSAppSyncClient mAWSAppSyncClient;
+
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class AddNotificationActivity extends AppCompatActivity {
         //creating notifications
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_plus_one_black_24dp)
+//                .setContentTitle(spinner)
                 .setContentTitle(time)
                 .setContentText(spinner)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

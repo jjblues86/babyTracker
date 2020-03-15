@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,9 +32,16 @@ import com.amazonaws.mobile.client.UserStateDetails;
 import com.amazonaws.mobile.config.AWSConfiguration;
 import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
 import com.amazonaws.mobileconnectors.appsync.fetcher.AppSyncResponseFetchers;
+import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration;
+import com.amazonaws.mobileconnectors.pinpoint.PinpointManager;
 import com.apollographql.apollo.GraphQLCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
 
     String TAG = "MainActivity";
     private AWSAppSyncClient mAWSAppSyncClient;
+    private static PinpointManager pinpointManager;
     List<Baby> babyList;
 
 
@@ -58,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
                 .awsConfiguration(new AWSConfiguration(getApplicationContext()))
                 .build();
         getBabyItems();
+        // Initialize PinpointManager
+        getPinpointManager(getApplicationContext());
 
         this.babyList = new ArrayList<>();
 
@@ -118,10 +129,10 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
 
         mAWSAppSyncClient.query(ListBabysQuery.builder().build())
                 .responseFetcher(AppSyncResponseFetchers.NETWORK_ONLY)
-                .enqueue(tasksCallback);
+                .enqueue(babyCallback);
     }
 
-    private GraphQLCall.Callback<ListBabysQuery.Data> tasksCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
+    private GraphQLCall.Callback<ListBabysQuery.Data> babyCallback = new GraphQLCall.Callback<ListBabysQuery.Data>() {
         @Override
         public void onResponse(@Nonnull Response<ListBabysQuery.Data> response) {
             Log.i(TAG, response.data().listBabys().items().toString());
@@ -286,6 +297,11 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
             this.startActivity(goToNotification);
             return (true);
 
+        } else if (itemId == R.id.widget_to_milestones) {
+            Intent goToMilestones = new Intent (this, MilestoneActivity.class);
+            this.startActivity(goToMilestones);
+            return (true);
+
         } else if (itemId == R.id.logout_button) {
             Toast.makeText(MainActivity.this, "Logging Out User", Toast.LENGTH_LONG).show();
             AWSMobileClient.getInstance().signOut();
@@ -294,7 +310,58 @@ public class MainActivity extends AppCompatActivity implements MyBabyRecyclerVie
         return (super.onOptionsItemSelected(item));
     }
 
+    public static PinpointManager getPinpointManager(final Context applicationContext) {
+        if (pinpointManager == null) {
+            final AWSConfiguration awsConfig = new AWSConfiguration(applicationContext);
+            AWSMobileClient.getInstance().initialize(applicationContext, awsConfig, new Callback<UserStateDetails>() {
+                @Override
+                public void onResult(UserStateDetails userStateDetails) {
+                    Log.i("INIT", userStateDetails.getUserState().toString());
+                }
 
+                @Override
+                public void onError(Exception e) {
+                    Log.e("INIT", "Initialization error.", e);
+                }
+            });
+
+            PinpointConfiguration pinpointConfig = new PinpointConfiguration(
+                    applicationContext,
+                    AWSMobileClient.getInstance(),
+                    awsConfig);
+
+            pinpointManager = new PinpointManager(pinpointConfig);
+
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        public String TAG;
+
+                        @Override
+                        public void onComplete(@NonNull com.google.android.gms.tasks.Task<InstanceIdResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "getInstanceId failed", task.getException());
+                                return;
+                            }
+                            final String token = task.getResult().getToken();
+                            Log.d(TAG, "Registering push notifications token: " + token);
+                            pinpointManager.getNotificationClient().registerDeviceToken(token);
+
+                        }
+
+//                        @Override
+//                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                            if (!task.isSuccessful()) {
+//                                Log.w(TAG, "getInstanceId failed", task.getException());
+//                                return;
+//                            }
+//                            final String token = task.getResult().getToken();
+//                            Log.d(TAG, "Registering push notifications token: " + token);
+//                            pinpointManager.getNotificationClient().registerDeviceToken(token);
+//                        }
+                    });
+        }
+        return pinpointManager;
+    }
     @Override
     public void onClickOnBabyCallback(Baby baby) {
 

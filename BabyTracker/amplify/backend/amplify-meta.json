@@ -100,7 +100,6 @@
 					"Version": 1
 				}
 			},
-			"lastPushTimeStamp": "2020-03-11T20:50:54.446Z"
 			"lastPushTimeStamp": "2020-03-11T18:48:57.265Z",
 			"providerMetadata": {
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-babytracker-baby-110045-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
