@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.amazonaws.appsync'
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -18,9 +22,7 @@ android {
         }
     }
 }
-apply plugin: 'com.amazonaws.appsync'
-apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+
 
 dependencies {
     // Overrides an auth dependency to ensure correct behavior
